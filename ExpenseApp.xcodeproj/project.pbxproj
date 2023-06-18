@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04D0FE692A3FA9D700C13DBA /* ExpenseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0FE682A3FA9D700C13DBA /* ExpenseDetailViewController.swift */; };
+		04D0FE6B2A3FAA3000C13DBA /* ExpenseDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0FE6A2A3FAA3000C13DBA /* ExpenseDetailTableViewCell.swift */; };
+		04D0FE6D2A3FAA7A00C13DBA /* ExpenseTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D0FE6C2A3FAA7A00C13DBA /* ExpenseTableHeaderView.swift */; };
 		A9B34E192A3F08B7006BC157 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B34E182A3F08B7006BC157 /* AppDelegate.swift */; };
 		A9B34E1B2A3F08B7006BC157 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B34E1A2A3F08B7006BC157 /* SceneDelegate.swift */; };
 		A9B34E222A3F08BB006BC157 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B34E212A3F08BB006BC157 /* Assets.xcassets */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04D0FE682A3FA9D700C13DBA /* ExpenseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailViewController.swift; sourceTree = "<group>"; };
+		04D0FE6A2A3FAA3000C13DBA /* ExpenseDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDetailTableViewCell.swift; sourceTree = "<group>"; };
+		04D0FE6C2A3FAA7A00C13DBA /* ExpenseTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableHeaderView.swift; sourceTree = "<group>"; };
 		A9B34E152A3F08B7006BC157 /* ExpenseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B34E182A3F08B7006BC157 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B34E1A2A3F08B7006BC157 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +68,10 @@
 				A9B34E182A3F08B7006BC157 /* AppDelegate.swift */,
 				A9B34E1A2A3F08B7006BC157 /* SceneDelegate.swift */,
 				A9B34E2C2A3F0E30006BC157 /* TabBarViewController.swift */,
+				04D0FE682A3FA9D700C13DBA /* ExpenseDetailViewController.swift */,
 				A9B34E2E2A3F1256006BC157 /* ExpenseViewController.swift */,
+				04D0FE6A2A3FAA3000C13DBA /* ExpenseDetailTableViewCell.swift */,
+				04D0FE6C2A3FAA7A00C13DBA /* ExpenseTableHeaderView.swift */,
 				A9B34E212A3F08BB006BC157 /* Assets.xcassets */,
 				A9B34E232A3F08BB006BC157 /* LaunchScreen.storyboard */,
 				A9B34E262A3F08BB006BC157 /* Info.plist */,
@@ -140,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D0FE692A3FA9D700C13DBA /* ExpenseDetailViewController.swift in Sources */,
 				A9B34E2D2A3F0E30006BC157 /* TabBarViewController.swift in Sources */,
 				A9B34E2F2A3F1256006BC157 /* ExpenseViewController.swift in Sources */,
+				04D0FE6D2A3FAA7A00C13DBA /* ExpenseTableHeaderView.swift in Sources */,
 				A9B34E192A3F08B7006BC157 /* AppDelegate.swift in Sources */,
+				04D0FE6B2A3FAA3000C13DBA /* ExpenseDetailTableViewCell.swift in Sources */,
 				A9B34E1B2A3F08B7006BC157 /* SceneDelegate.swift in Sources */,
 				A9B34E312A3F835C006BC157 /* Expense.swift in Sources */,
 			);
@@ -283,6 +295,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8YA5L65S6V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExpenseApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -309,6 +322,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8YA5L65S6V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ExpenseApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
