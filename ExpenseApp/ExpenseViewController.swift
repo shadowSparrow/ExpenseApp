@@ -12,7 +12,7 @@ class ExpenseViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
             let tableView = UITableView()
-            //tableView.delegate = self
+            tableView.delegate = self
             tableView.dataSource = self
             tableView.backgroundColor = .white
             tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,18 +61,18 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryView = accessory
         return cell
     }
-    /*
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         //let detailVC = ExpenseDetailsViewController()
         let cell = tableView.cellForRow(at: indexPath)
        // detailVC.text = cell?.textLabel?.text ?? "Wrong"
-        show(detailVC, sender: nil)
+        //show(detailVC, sender: nil)
     }
-     */
-    /*
+     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         64
     }
-    */
+
 }
