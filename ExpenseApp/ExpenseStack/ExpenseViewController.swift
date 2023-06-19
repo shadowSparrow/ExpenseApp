@@ -145,10 +145,10 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let detailVC = ExpenseDetailsViewController()
+        let detailVC = ExpenseDetailViewController()
          let cell = tableView.cellForRow(at: indexPath)
-       detailVC.text = cell?.textLabel?.text ?? "Wrong"
-    show(detailVC, sender: nil)
+       //detailVC.text = cell?.textLabel?.text ?? "Wrong"
+    //show(detailVC, sender: nil)
     }
      
     

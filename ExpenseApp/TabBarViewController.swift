@@ -12,24 +12,34 @@ enum Tabs: Int, CaseIterable {
     case income
     case chart
     case expenses
+    
+    static func rawSting(tab: Tabs)-> String {
+        switch tab {
+        case .income: return "Доходы"
+        case.chart: return "График"
+        default: return "Расход"
+        }
+    
+    }
 }
 
 class TabBarViewController: UITabBarController {
     var expensesVC = UINavigationController(rootViewController: ExpenseViewController())
         var expensesGraphVC = UINavigationController()
         var incomeVC = UINavigationController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewControllers = [incomeVC,expensesGraphVC, expensesVC]
-                
-                self.expensesVC.title = "Расходы"
-                self.expensesGraphVC.title = "График"
-                self.incomeVC.title = "Доходы"
         
-        self.expensesVC.tabBarItem.image = UIImage(systemName: "circle")
-        self.expensesGraphVC.tabBarItem.image = UIImage(systemName: "circle")
-        self.incomeVC.tabBarItem.image = UIImage(systemName: "circle")
-        // Do any additional setup after loading the view.
+        //Прописать в ручную на занятии
+        let controllers: [UINavigationController] = Tabs.allCases.map { tab in
+            let controller = UINavigationController(rootViewController: getController(for: tab))
+            controller.tabBarItem = UITabBarItem(title: Tabs.rawSting(tab: tab),
+                                                 image: UIImage(systemName: "circle"),
+                                                 tag: tab.rawValue)
+            return controller
+        }
+        setViewControllers(controllers, animated: false)
     }
     
 

@@ -60,6 +60,22 @@
 			path = ExpenseStack;
 			sourceTree = "<group>";
 		};
+		04D0FE792A4098A800C13DBA /* IncomeStack */ = {
+			isa = PBXGroup;
+			children = (
+				04D0FE752A40984400C13DBA /* IncomeViewController.swift */,
+			);
+			path = IncomeStack;
+			sourceTree = "<group>";
+		};
+		04D0FE7A2A4098E300C13DBA /* ChartStack */ = {
+			isa = PBXGroup;
+			children = (
+				04D0FE772A40985A00C13DBA /* ChartViewController.swift */,
+			);
+			path = ChartStack;
+			sourceTree = "<group>";
+		};
 		A9B34E0C2A3F08B7006BC157 = {
 			isa = PBXGroup;
 			children = (
@@ -83,8 +99,8 @@
 				A9B34E182A3F08B7006BC157 /* AppDelegate.swift */,
 				A9B34E1A2A3F08B7006BC157 /* SceneDelegate.swift */,
 				A9B34E2C2A3F0E30006BC157 /* TabBarViewController.swift */,
-				04D0FE752A40984400C13DBA /* IncomeViewController.swift */,
-				04D0FE772A40985A00C13DBA /* ChartViewController.swift */,
+				04D0FE792A4098A800C13DBA /* IncomeStack */,
+				04D0FE7A2A4098E300C13DBA /* ChartStack */,
 				04D0FE6E2A3FAD1C00C13DBA /* ExpenseStack */,
 				A9B34E212A3F08BB006BC157 /* Assets.xcassets */,
 				A9B34E232A3F08BB006BC157 /* LaunchScreen.storyboard */,
