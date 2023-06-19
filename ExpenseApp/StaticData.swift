@@ -20,7 +20,6 @@ enum Tabs: Int, CaseIterable {
     }
 }
 
-
 enum elemensNames {
     //Buttons
     static let addExpenseGathegory = "Добавить категорию расходов"
@@ -31,4 +30,8 @@ enum elemensNames {
     
     //TableView
     static let accessoryImagesName = "chevron.right"
+    
+    //TabBar
+    
+    static let tabBarIconName = "circle"
 }

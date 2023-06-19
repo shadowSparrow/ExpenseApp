@@ -9,10 +9,7 @@ import UIKit
 
 
 class TabBarViewController: UITabBarController {
-    var expensesVC = UINavigationController(rootViewController: ExpenseViewController())
-        var expensesGraphVC = UINavigationController()
-        var incomeVC = UINavigationController()
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,15 +17,13 @@ class TabBarViewController: UITabBarController {
         let controllers: [UINavigationController] = Tabs.allCases.map { tab in
             let controller = UINavigationController(rootViewController: setController(for: tab))
             controller.tabBarItem = UITabBarItem(title: Tabs.rawSting(tab: tab),
-                                                 image: UIImage(systemName: "circle"),
+                                                 image: UIImage(systemName: elemensNames.tabBarIconName),
                                                  tag: tab.rawValue)
             return controller
         }
         setViewControllers(controllers, animated: false)
     }
     
-
-
     private func setController(for tab: Tabs) -> UIViewController {
         switch tab {
         case .income:
