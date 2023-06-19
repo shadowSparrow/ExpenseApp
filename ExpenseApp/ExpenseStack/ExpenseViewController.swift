@@ -21,7 +21,7 @@ class ExpenseViewController: UIViewController {
     
     lazy var button: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 58))
-            button.setTitle("Добавить категорию раходов", for: .normal)
+        button.setTitle(elemensNames.addExpenseGathegory, for: .normal)
             button.backgroundColor = .blue
             button.layer.cornerRadius = 24
             button.addTarget(self, action: #selector(addExpensesButtonPressed), for: .touchUpInside)
@@ -34,7 +34,7 @@ class ExpenseViewController: UIViewController {
             texField.isHidden = true
             texField.delegate = self
             texField.attributedPlaceholder = NSAttributedString(
-                string: "наименование",
+                string: elemensNames.addGathegoryPlaceHolder,
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
             )
             texField.textAlignment = .left
@@ -133,7 +133,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
-        let image = UIImage(systemName: "chevron.right")
+        let image = UIImage(systemName: elemensNames.accessoryImagesName)
         cell.backgroundColor = .white
         cell.textLabel?.textColor = .black
         cell.textLabel?.text = expenses[indexPath.row].gathegory
@@ -145,8 +145,8 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let detailVC = ExpenseDetailViewController()
-         let cell = tableView.cellForRow(at: indexPath)
+        //let detailVC = ExpenseDetailViewController()
+         //let cell = tableView.cellForRow(at: indexPath)
        //detailVC.text = cell?.textLabel?.text ?? "Wrong"
     //show(detailVC, sender: nil)
     }
