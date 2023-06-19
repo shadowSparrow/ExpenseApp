@@ -52,6 +52,47 @@ class ExpenseDetailViewController: UIViewController {
         return label
     }()
     
+    private let purposeTextField: UITextField = {
+        let textField = UITextField()
+        textField.textAlignment = .left
+        textField.backgroundColor = .systemBackground
+        textField.borderStyle = .none
+        //textField.setUnderLine(color: Const.Colors.underLine)
+        textField.textColor = .label
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        textField.autocapitalizationType = .none
+        textField.keyboardType = .default
+        textField.leftViewMode = .always
+        textField.clearButtonMode = .always
+        return textField
+    }()
+
+    private lazy var amountTextField: UITextField = {
+        let textField = UITextField()
+        textField.textAlignment = .left
+        textField.backgroundColor = .systemBackground
+        textField.borderStyle = .none
+        //textField.setUnderLine(color: Const.Colors.underLine)
+        textField.textColor = .label
+        textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        textField.autocapitalizationType = .none
+        textField.keyboardType = .decimalPad
+        textField.delegate = self
+        textField.leftViewMode = .always
+        textField.clearButtonMode = .always
+        return textField
+    }()
+
+    private let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        //datePicker.locale = Locale(identifier: Const.Strings.localIdentifier)
+        datePicker.maximumDate = Date()
+        datePicker.preferredDatePickerStyle = .compact
+        return datePicker
+    }()
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +113,7 @@ class ExpenseDetailViewController: UIViewController {
 
 extension ExpenseDetailViewController {
     @objc func addExpenseButtonPressed() {
+        
     }
     
     private func setUIElements() {
@@ -113,6 +155,8 @@ extension ExpenseDetailViewController {
     }
 }
 
+
+
 extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,4 +185,11 @@ extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
      
 }
+
+extension ExpenseDetailViewController:  UITextFieldDelegate{
+    
+}
+
+
+
 
