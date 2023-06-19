@@ -43,4 +43,15 @@ class TabBarViewController: UITabBarController {
     }
     */
 
+    private func getController(for tab: Tabs) -> UIViewController {
+        switch tab {
+        case .income:
+            return IncomeViewController()
+        case .chart:
+            return ChartViewController()
+        case .expenses:
+            return ExpenseViewController()
+        }
+    }
+    
 }
