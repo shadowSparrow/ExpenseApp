@@ -21,6 +21,14 @@ class ExpenseDetailViewController: UIViewController {
         return tableView
     }()
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.alignment = .center
+        return stackView
+    }()
+    
     lazy var button: UIButton = {
         let button = UIButton()
         
@@ -32,6 +40,15 @@ class ExpenseDetailViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private let addExpenseLabel: UILabel = {
+        let label = UILabel()
+        label.text = elemensNames.addExpense
+        //label.font = Const.Fonts.helveticaNeueCyrBlack(size: 22)
+        label.textAlignment = .center
+        return label
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +73,13 @@ extension ExpenseDetailViewController {
     }
     
     private func setUIElements() {
+        
         self.view.addSubview(tableView)
-        self.view.addSubview(button)
+        stackView.addArrangedSubview(button)
+        stackView.addArrangedSubview(addExpenseLabel)
+        self.view.addSubview(stackView)
+        
+        
     }
     
    
