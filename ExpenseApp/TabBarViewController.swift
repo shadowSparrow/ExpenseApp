@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+enum Tabs: Int, CaseIterable {
+    case income
+    case chart
+    case expenses
+}
+
 class TabBarViewController: UITabBarController {
     var expensesVC = UINavigationController(rootViewController: ExpenseViewController())
         var expensesGraphVC = UINavigationController()
