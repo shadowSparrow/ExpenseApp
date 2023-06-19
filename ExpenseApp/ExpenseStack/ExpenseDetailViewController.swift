@@ -23,9 +23,11 @@ class ExpenseDetailViewController: UIViewController {
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
+        //stackView.backgroundColor = .gray
         stackView.axis = .vertical
         stackView.spacing = 8
         stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -44,8 +46,9 @@ class ExpenseDetailViewController: UIViewController {
     private let addExpenseLabel: UILabel = {
         let label = UILabel()
         label.text = elemensNames.addExpense
-        //label.font = Const.Fonts.helveticaNeueCyrBlack(size: 22)
+        label.font = UIFont.systemFont(ofSize: 32)
         label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -54,7 +57,6 @@ class ExpenseDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = text
-        
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
         self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationController?.navigationBar.tintColor = .black
@@ -92,10 +94,20 @@ extension ExpenseDetailViewController {
             tableView.topAnchor.constraint(equalTo: guide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -300),
             
-            button.heightAnchor.constraint(equalToConstant: 120),
-            button.widthAnchor.constraint(equalToConstant: 120),
-            button.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -64),
-            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0)
+            addExpenseLabel.heightAnchor.constraint(equalToConstant: 64),
+            addExpenseLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            addExpenseLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            addExpenseLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+            
+            button.heightAnchor.constraint(equalToConstant: 96),
+            button.widthAnchor.constraint(equalToConstant: 96),
+            button.topAnchor.constraint(equalTo: stackView.topAnchor),
+            
+            stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -128)
+                        
             ])
         
     }

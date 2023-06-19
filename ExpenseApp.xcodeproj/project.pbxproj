@@ -78,6 +78,14 @@
 			path = ChartStack;
 			sourceTree = "<group>";
 		};
+		04D0FE7D2A40AF5000C13DBA /* ModelsAndData */ = {
+			isa = PBXGroup;
+			children = (
+				04D0FE7B2A40A74000C13DBA /* StaticData.swift */,
+			);
+			path = ModelsAndData;
+			sourceTree = "<group>";
+		};
 		A9B34E0C2A3F08B7006BC157 = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +109,7 @@
 				A9B34E182A3F08B7006BC157 /* AppDelegate.swift */,
 				A9B34E1A2A3F08B7006BC157 /* SceneDelegate.swift */,
 				A9B34E2C2A3F0E30006BC157 /* TabBarViewController.swift */,
-				04D0FE7B2A40A74000C13DBA /* StaticData.swift */,
+				04D0FE7D2A40AF5000C13DBA /* ModelsAndData */,
 				04D0FE792A4098A800C13DBA /* IncomeStack */,
 				04D0FE7A2A4098E300C13DBA /* ChartStack */,
 				04D0FE6E2A3FAD1C00C13DBA /* ExpenseStack */,
