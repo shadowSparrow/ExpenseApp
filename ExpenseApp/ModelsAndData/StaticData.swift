@@ -32,6 +32,5 @@ enum elemensNames {
     static let accessoryImagesName = "chevron.right"
     
     //TabBar
-    
     static let tabBarIconName = "circle"
 }

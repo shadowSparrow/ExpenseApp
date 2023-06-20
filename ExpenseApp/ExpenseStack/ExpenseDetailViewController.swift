@@ -24,7 +24,6 @@ class ExpenseDetailViewController: UIViewController{
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
-        //stackView.backgroundColor = .gray
         stackView.axis = .vertical
         stackView.spacing = 8
         stackView.alignment = .center
@@ -34,11 +33,13 @@ class ExpenseDetailViewController: UIViewController{
     
     lazy var button: UIButton = {
         let button = UIButton()
-        
-        let image = UIImage(systemName: "plus.circle")
-        button.setBackgroundImage(image, for: .normal)
+        let image = UIImage(systemName: "plus")
+        button.setImage(image, for: .normal)
+        var config = UIButton.Configuration.filled()
+        config.cornerStyle = .capsule
+        button.configuration = config
         button.backgroundColor = .blue
-        button.layer.cornerRadius = 45
+        button.layer.cornerRadius = 35
         button.addTarget(self, action: #selector(addExpenseButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -47,7 +48,7 @@ class ExpenseDetailViewController: UIViewController{
     private let addExpenseLabel: UILabel = {
         let label = UILabel()
         label.text = elemensNames.addExpense
-        label.font = UIFont.systemFont(ofSize: 32)
+        label.font = UIFont.systemFont(ofSize: 22,weight: .medium)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -136,7 +137,7 @@ class ExpenseDetailViewController: UIViewController{
         super.viewDidLoad()
         
         self.title = text
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: .medium)]
         self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationController?.navigationBar.tintColor = .black
         self.view.backgroundColor = UIColor.white
@@ -204,14 +205,14 @@ extension ExpenseDetailViewController {
             addExpenseLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             addExpenseLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
             
-            button.heightAnchor.constraint(equalToConstant: 90),
-            button.widthAnchor.constraint(equalToConstant: 90),
+            button.heightAnchor.constraint(equalToConstant: 70),
+            button.widthAnchor.constraint(equalToConstant: 70),
             button.topAnchor.constraint(equalTo: stackView.topAnchor),
             
             stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -128)
+            stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -16)
                         
             ])
         
@@ -250,7 +251,7 @@ extension ExpenseDetailViewController {
     @objc func keyboardWillShow(notification: Notification) {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 if isShowingKeybord {
-                    self.view.frame.origin.y = -keyboardSize.height/2
+                    self.view.frame.origin.y = -keyboardSize.height
                 }
             }
         }

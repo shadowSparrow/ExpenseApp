@@ -14,6 +14,7 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     private let labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.spacing = 40
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,8 +24,8 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     private let expenseItemLabel: UILabel = {
         let label = UILabel()
         label.text = "на что"
-        //label.font = Const.Fonts.helveticaNeueCyrBlack(size: 13)
-        label.textColor = .secondaryLabel
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textColor = .darkGray
         label.textAlignment = .center
         return label
     }()
@@ -32,8 +33,8 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     private let expenseTimeLabel: UILabel = {
         let label = UILabel()
          label.text = "когда"
-        //label.font = Const.Fonts.helveticaNeueCyrBlack(size: 13)
-        label.textColor = .secondaryLabel
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textColor = .darkGray
         label.textAlignment = .center
         return label
     }()
@@ -41,8 +42,8 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     private let expenseAmountLabel: UILabel = {
         let label = UILabel()
         label.text = "сколько"
-        //label.font = Const.Fonts.helveticaNeueCyrBlack(size: 13)
-        label.textColor = .secondaryLabel
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textColor = .darkGray
         label.textAlignment = .center
         return label
     }()
