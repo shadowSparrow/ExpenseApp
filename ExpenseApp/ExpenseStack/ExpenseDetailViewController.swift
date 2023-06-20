@@ -10,6 +10,7 @@ import UIKit
 class ExpenseDetailViewController: UIViewController {
 
     var text: String = "Ремонт"
+    var expenses: [Expense] = []
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -52,27 +53,48 @@ class ExpenseDetailViewController: UIViewController {
         return label
     }()
     
+    
+    private let operationStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.backgroundColor = .white
+        stackView.isHidden = false
+        stackView.axis = .vertical
+        stackView.spacing = 16
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
     private let purposeTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .left
-        textField.backgroundColor = .systemBackground
-        textField.borderStyle = .none
-        //textField.setUnderLine(color: Const.Colors.underLine)
+        textField.backgroundColor = .white
+        
+        textField.attributedPlaceholder = NSAttributedString(
+            string: elemensNames.addGathegoryPlaceHolder,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        )
+        textField.layer.cornerRadius = 4
         textField.textColor = .label
         textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         textField.autocapitalizationType = .none
         textField.keyboardType = .default
         textField.leftViewMode = .always
         textField.clearButtonMode = .always
+        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
     private lazy var amountTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .left
-        textField.backgroundColor = .systemBackground
-        textField.borderStyle = .none
-        //textField.setUnderLine(color: Const.Colors.underLine)
+        textField.backgroundColor = .white
+        
+        textField.layer.cornerRadius = 4
+        textField.attributedPlaceholder = NSAttributedString(
+            string: elemensNames.addGathegoryPlaceHolder,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        )
         textField.textColor = .label
         textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         textField.autocapitalizationType = .none
@@ -80,6 +102,7 @@ class ExpenseDetailViewController: UIViewController {
         textField.delegate = self
         textField.leftViewMode = .always
         textField.clearButtonMode = .always
+        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
@@ -89,6 +112,7 @@ class ExpenseDetailViewController: UIViewController {
         //datePicker.locale = Locale(identifier: Const.Strings.localIdentifier)
         datePicker.maximumDate = Date()
         datePicker.preferredDatePickerStyle = .compact
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
 
@@ -106,6 +130,8 @@ class ExpenseDetailViewController: UIViewController {
 
         setUIElements()
         setConstraints()
+        setOperationElements()
+        setOperationElementsContraints()
         
     }
     
@@ -122,6 +148,16 @@ extension ExpenseDetailViewController {
         stackView.addArrangedSubview(button)
         stackView.addArrangedSubview(addExpenseLabel)
         self.view.addSubview(stackView)
+        
+        
+    }
+    
+    private func setOperationElements() {
+        
+        operationStackView.addArrangedSubview(purposeTextField)
+        operationStackView.addArrangedSubview(amountTextField)
+        operationStackView.addArrangedSubview(datePicker)
+        self.view.addSubview(operationStackView)
         
         
     }
@@ -151,6 +187,26 @@ extension ExpenseDetailViewController {
             stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -128)
                         
             ])
+        
+    }
+    
+    
+    private func setOperationElementsContraints() {
+        let guide = self.view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+        
+        operationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        operationStackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
+        operationStackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
+        operationStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -8),
+        
+        purposeTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+        purposeTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+        
+        amountTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+        amountTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+        
+        ])
         
     }
 }
