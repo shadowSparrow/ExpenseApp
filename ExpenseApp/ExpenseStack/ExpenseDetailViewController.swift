@@ -10,7 +10,7 @@ import UIKit
 class ExpenseDetailViewController: UIViewController{
 
     var text: String = "Ремонт"
-    var expenses: [Expense] = []
+    var expenses: [ExpenseGathegory] = []
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()

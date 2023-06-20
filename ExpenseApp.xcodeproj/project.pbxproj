@@ -81,6 +81,7 @@
 		04D0FE7D2A40AF5000C13DBA /* ModelsAndData */ = {
 			isa = PBXGroup;
 			children = (
+				A9B34E302A3F835C006BC157 /* Expense.swift */,
 				04D0FE7B2A40A74000C13DBA /* StaticData.swift */,
 			);
 			path = ModelsAndData;
@@ -89,7 +90,6 @@
 		A9B34E0C2A3F08B7006BC157 = {
 			isa = PBXGroup;
 			children = (
-				A9B34E302A3F835C006BC157 /* Expense.swift */,
 				A9B34E172A3F08B7006BC157 /* ExpenseApp */,
 				A9B34E162A3F08B7006BC157 /* Products */,
 			);
