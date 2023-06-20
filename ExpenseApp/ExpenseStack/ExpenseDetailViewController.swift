@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExpenseDetailViewController: UIViewController {
+class ExpenseDetailViewController: UIViewController{
 
     var text: String = "Ремонт"
     var expenses: [Expense] = []
@@ -37,8 +37,8 @@ class ExpenseDetailViewController: UIViewController {
         
         let image = UIImage(systemName: "plus.circle")
         button.setBackgroundImage(image, for: .normal)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 60
+        button.backgroundColor = .blue
+        button.layer.cornerRadius = 45
         button.addTarget(self, action: #selector(addExpenseButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -57,7 +57,7 @@ class ExpenseDetailViewController: UIViewController {
     private let operationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = .white
-        stackView.isHidden = false
+        stackView.isHidden = true
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.alignment = .center
@@ -65,11 +65,11 @@ class ExpenseDetailViewController: UIViewController {
         return stackView
     }()
     
-    private let purposeTextField: UITextField = {
+    private lazy var purposeTextField: UITextField = {
         let textField = UITextField()
         textField.textAlignment = .left
         textField.backgroundColor = .white
-        
+        textField.delegate = self
         textField.attributedPlaceholder = NSAttributedString(
             string: elemensNames.addGathegoryPlaceHolder,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
@@ -112,11 +112,25 @@ class ExpenseDetailViewController: UIViewController {
         //datePicker.locale = Locale(identifier: Const.Strings.localIdentifier)
         datePicker.maximumDate = Date()
         datePicker.preferredDatePickerStyle = .compact
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        //datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
-
     
+    private lazy var dateTextField: UITextField = {
+        let textField = UITextField()
+        let label = UILabel()
+        label.text = elemensNames.addGathegoryPlaceHolder
+        label.textAlignment = .right
+        textField.leftView = label
+        
+        textField.leftViewMode = .always
+        textField.rightView = datePicker
+        textField.rightViewMode = .always
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    var isShowingKeybord = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,14 +146,26 @@ class ExpenseDetailViewController: UIViewController {
         setConstraints()
         setOperationElements()
         setOperationElementsContraints()
-        
+        setKeyboardNotification()
     }
     
 }
 
 extension ExpenseDetailViewController {
     @objc func addExpenseButtonPressed() {
-        
+        if button.backgroundColor == UIColor.lightGray {
+            button.backgroundColor = UIColor.blue
+            operationStackView.isHidden = true
+            //let newExpense = Expense(gathegory: texField.text ?? "error")
+            //expenses.append(newExpense)
+            //tableView.reloadData()
+            self.view.endEditing(true)
+           }
+           else if button.backgroundColor == UIColor.blue {
+               button.backgroundColor = UIColor.lightGray
+               operationStackView.isHidden = false
+               purposeTextField.becomeFirstResponder()
+           }
     }
     
     private func setUIElements() {
@@ -156,7 +182,7 @@ extension ExpenseDetailViewController {
         
         operationStackView.addArrangedSubview(purposeTextField)
         operationStackView.addArrangedSubview(amountTextField)
-        operationStackView.addArrangedSubview(datePicker)
+        operationStackView.addArrangedSubview(dateTextField)
         self.view.addSubview(operationStackView)
         
         
@@ -167,6 +193,7 @@ extension ExpenseDetailViewController {
     private func setConstraints() {
         let guide = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
+            
             tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: guide.topAnchor),
@@ -177,8 +204,8 @@ extension ExpenseDetailViewController {
             addExpenseLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             addExpenseLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
             
-            button.heightAnchor.constraint(equalToConstant: 96),
-            button.widthAnchor.constraint(equalToConstant: 96),
+            button.heightAnchor.constraint(equalToConstant: 90),
+            button.widthAnchor.constraint(equalToConstant: 90),
             button.topAnchor.constraint(equalTo: stackView.topAnchor),
             
             stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -193,22 +220,44 @@ extension ExpenseDetailViewController {
     
     private func setOperationElementsContraints() {
         let guide = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
         
+        NSLayoutConstraint.activate([
         operationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         operationStackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
         operationStackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-        operationStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -8),
+        operationStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -16),
         
-        purposeTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-        purposeTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+        purposeTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
+        purposeTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
+        purposeTextField.heightAnchor.constraint(equalToConstant: 40),
         
-        amountTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-        amountTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+        amountTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
+        amountTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
+        amountTextField.heightAnchor.constraint(equalToConstant: 40),
+        
+        dateTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
+        dateTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
+        dateTextField.heightAnchor.constraint(equalToConstant: 40)
         
         ])
         
     }
+    
+    private func setKeyboardNotification(){
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+    @objc func keyboardWillShow(notification: Notification) {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if isShowingKeybord {
+                    self.view.frame.origin.y = -keyboardSize.height/2
+                }
+            }
+        }
+    @objc func keyboardWillHide(notification: Notification) {
+            self.view.frame.origin.y = 0
+        }
+    
 }
 
 
@@ -216,7 +265,7 @@ extension ExpenseDetailViewController {
 extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -242,7 +291,21 @@ extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSourc
      
 }
 
-extension ExpenseDetailViewController:  UITextFieldDelegate{
+extension ExpenseDetailViewController:  UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+        
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            isShowingKeybord = true
+        }
+        
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            isShowingKeybord = false
+            
+        }
     
 }
 
