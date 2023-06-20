@@ -10,7 +10,7 @@ import UIKit
 class ExpenseDetailViewController: UIViewController{
 
     var text: String = "Ремонт"
-    var expenses: [ExpenseGathegory] = []
+    var currentGarhegory: ExpenseGathegory!
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -157,7 +157,6 @@ extension ExpenseDetailViewController {
         if button.backgroundColor == UIColor.lightGray {
             button.backgroundColor = UIColor.blue
             operationStackView.isHidden = true
-            //let newExpense = Expense(gathegory: texField.text ?? "error")
             //expenses.append(newExpense)
             //tableView.reloadData()
             self.view.endEditing(true)
