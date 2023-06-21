@@ -140,6 +140,8 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
         let detailVC = ExpenseDetailViewController()
         let cell = tableView.cellForRow(at: indexPath)
         detailVC.text = cell?.textLabel?.text ?? "Wrong"
+        detailVC.currentGarhegory = expenses[indexPath.row]
+        //print(detailVC.currentGarhegory)
         show(detailVC, sender: nil)
     }
      

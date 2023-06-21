@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExpenseDetailViewController: UIViewController{
+class ExpenseDetailViewController: UIViewController {
 
     var text: String = "Ремонт"
     var currentGarhegory: ExpenseGathegory!
@@ -48,7 +48,7 @@ class ExpenseDetailViewController: UIViewController{
     private let addExpenseLabel: UILabel = {
         let label = UILabel()
         label.text = elemensNames.addExpense
-        label.font = UIFont.systemFont(ofSize: 22,weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .medium)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -71,7 +71,7 @@ class ExpenseDetailViewController: UIViewController{
         textField.textAlignment = .left
         textField.backgroundColor = .white
         textField.delegate = self
-        textField.attributedPlaceholder = NSAttributedString(
+        textField.attributedPlaceholder = NSAttributedString (
             string: elemensNames.addGathegoryPlaceHolder,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
@@ -90,7 +90,6 @@ class ExpenseDetailViewController: UIViewController{
         let textField = UITextField()
         textField.textAlignment = .left
         textField.backgroundColor = .white
-        
         textField.layer.cornerRadius = 4
         textField.attributedPlaceholder = NSAttributedString(
             string: elemensNames.addGathegoryPlaceHolder,
@@ -142,6 +141,8 @@ class ExpenseDetailViewController: UIViewController{
         self.navigationController?.navigationBar.tintColor = .black
         self.view.backgroundColor = UIColor.white
         self.tabBarController?.tabBar.isHidden = true
+        
+        print(currentGarhegory.gathegory)
 
         setUIElements()
         setConstraints()
@@ -175,7 +176,6 @@ extension ExpenseDetailViewController {
         stackView.addArrangedSubview(addExpenseLabel)
         self.view.addSubview(stackView)
         
-        
     }
     
     private func setOperationElements() {
@@ -185,11 +185,9 @@ extension ExpenseDetailViewController {
         operationStackView.addArrangedSubview(dateTextField)
         self.view.addSubview(operationStackView)
         
-        
     }
     
    
-    
     private func setConstraints() {
         let guide = self.view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
