@@ -10,14 +10,17 @@ import UIKit
 class ExpenseDetailViewController: UIViewController {
 
     var text: String = "Ремонт"
-    var currentGarhegory: ExpenseGathegory!
+    var currentGarhegory = ExpenseGathegory(gathegory: "ремонт")
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .white
+        
+        tableView.register(DetailExpensesTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "cell")
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -103,6 +106,7 @@ class ExpenseDetailViewController: UIViewController {
         textField.leftViewMode = .always
         textField.clearButtonMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.isHidden = true
         return textField
     }()
 
@@ -122,9 +126,10 @@ class ExpenseDetailViewController: UIViewController {
         label.text = elemensNames.addGathegoryPlaceHolder
         label.textAlignment = .right
         textField.leftView = label
-        
+        textField.delegate = self
         textField.leftViewMode = .always
         textField.rightView = datePicker
+        textField.isHidden = true
         textField.rightViewMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -154,22 +159,24 @@ class ExpenseDetailViewController: UIViewController {
 }
 
 extension ExpenseDetailViewController {
+    
     @objc func addExpenseButtonPressed() {
         if button.backgroundColor == UIColor.lightGray {
             button.backgroundColor = UIColor.blue
             operationStackView.isHidden = true
-            
-            
             self.view.endEditing(true)
            }
            else if button.backgroundColor == UIColor.blue {
                button.backgroundColor = UIColor.lightGray
                operationStackView.isHidden = false
-               purposeTextField.becomeFirstResponder()
+               //purposeTextField.becomeFirstResponder()
+               
                let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: amountTextField.text ?? "0", date: dateTextField.text ?? "нет даты")
+               print("THIS IS NEW EXXPENSE \(newExpense)")
                currentGarhegory.expenses?.append(newExpense)
                tableView.reloadData()
-               
+            
+            
            }
     }
     
@@ -267,18 +274,16 @@ extension ExpenseDetailViewController {
 extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currentGarhegory.expenses?.count ?? 0
+        currentGarhegory.expenses?.count ?? 2
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = DetailTableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.backgroundColor = .black
-        /*
-        let description = currentGarhegory.expenses?[indexPath.row].description
-        let amount = currentGarhegory.expenses?[indexPath.row].amount
-        let date = currentGarhegory.expenses?[indexPath.row].date
-        */
-        cell.textLabel?.text = currentGarhegory.gathegory
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DetailTableViewCell
+        
+        cell.expenseItemLabel.text = "Item"
+        cell.expenseAmountLabel.text = "Amount"
+        cell.expenseTimeLabel.text = "Time"
+        
         return cell
     }
     

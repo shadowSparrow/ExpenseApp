@@ -18,7 +18,7 @@ class DetailTableViewCell: UITableViewCell {
         return stackView
     }()
 
-    private let expenseItemLabel: UILabel = {
+     lazy var expenseItemLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         //label.text = "на что"
@@ -27,7 +27,7 @@ class DetailTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let expenseTimeLabel: UILabel = {
+    lazy var expenseTimeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         //label.text = "когда"
@@ -36,7 +36,7 @@ class DetailTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let expenseAmountLabel: UILabel = {
+    lazy var expenseAmountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         //label.text = "сколько"
@@ -66,9 +66,16 @@ class DetailTableViewCell: UITableViewCell {
         labelsStackView.addArrangedSubview(expenseAmountLabel)
     }
     
-    private func setupConstraints(){
+    private func setupConstraints() {
         labelsStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         labelsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
+    
+    func configure(with expenseData: ExpenseModel) {
+        expenseItemLabel.text = expenseData.description
+        expenseTimeLabel.text = expenseData.date
+        expenseAmountLabel.text = expenseData.amount
+    }
+    
 
 }
