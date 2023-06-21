@@ -106,7 +106,7 @@ class ExpenseDetailViewController: UIViewController {
         textField.leftViewMode = .always
         textField.clearButtonMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.isHidden = true
+        //textField.isHidden = true
         return textField
     }()
 
@@ -129,7 +129,7 @@ class ExpenseDetailViewController: UIViewController {
         textField.delegate = self
         textField.leftViewMode = .always
         textField.rightView = datePicker
-        textField.isHidden = true
+        //textField.isHidden = true
         textField.rightViewMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -166,9 +166,9 @@ extension ExpenseDetailViewController {
             button.backgroundColor = UIColor.blue
             operationStackView.isHidden = true
             let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: amountTextField.text ?? "0", date: dateTextField.text ?? "нет даты")
-            print("THIS IS NEW EXXPENSE \(newExpense)")
+            //print("THIS IS NEW EXXPENSE \(newExpense)")
             currentGarhegory.expenses?.append(newExpense)
-            print("THIS Array of Expenses \(currentGarhegory.expenses)")
+            //print("THIS Array of Expenses \(currentGarhegory.expenses)")
             self.view.endEditing(true)
             tableView.reloadData()
            }
@@ -284,9 +284,12 @@ extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DetailTableViewCell
         guard let expenses = currentGarhegory.expenses else {return cell}
         
+        cell.configure(with: expenses[indexPath.row])
+        /*
         cell.expenseItemLabel.text = currentGarhegory.expenses![indexPath.row].description
         cell.expenseAmountLabel.text = "Amount"
         cell.expenseTimeLabel.text = "Time"
+        */
         
         return cell
     }
