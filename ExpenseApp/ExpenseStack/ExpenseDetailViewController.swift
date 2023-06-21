@@ -10,7 +10,7 @@ import UIKit
 class ExpenseDetailViewController: UIViewController {
 
     var text: String = "Ремонт"
-    var currentGarhegory = ExpenseGathegory(gathegory: "ремонт")
+    var currentGarhegory: ExpenseGathegory!
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -161,20 +161,23 @@ class ExpenseDetailViewController: UIViewController {
 extension ExpenseDetailViewController {
     
     @objc func addExpenseButtonPressed() {
+        
         if button.backgroundColor == UIColor.lightGray {
             button.backgroundColor = UIColor.blue
             operationStackView.isHidden = true
+            let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: amountTextField.text ?? "0", date: dateTextField.text ?? "нет даты")
+            print("THIS IS NEW EXXPENSE \(newExpense)")
+            currentGarhegory.expenses?.append(newExpense)
+            print("THIS Array of Expenses \(currentGarhegory.expenses)")
             self.view.endEditing(true)
+            tableView.reloadData()
            }
            else if button.backgroundColor == UIColor.blue {
                button.backgroundColor = UIColor.lightGray
                operationStackView.isHidden = false
-               //purposeTextField.becomeFirstResponder()
+               purposeTextField.becomeFirstResponder()
                
-               let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: amountTextField.text ?? "0", date: dateTextField.text ?? "нет даты")
-               print("THIS IS NEW EXXPENSE \(newExpense)")
-               currentGarhegory.expenses?.append(newExpense)
-               tableView.reloadData()
+               
             
             
            }
@@ -279,8 +282,9 @@ extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! DetailTableViewCell
+        guard let expenses = currentGarhegory.expenses else {return cell}
         
-        cell.expenseItemLabel.text = "Item"
+        cell.expenseItemLabel.text = currentGarhegory.expenses![indexPath.row].description
         cell.expenseAmountLabel.text = "Amount"
         cell.expenseTimeLabel.text = "Time"
         

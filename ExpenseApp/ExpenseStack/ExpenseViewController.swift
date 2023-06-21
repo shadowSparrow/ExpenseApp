@@ -87,7 +87,7 @@ class ExpenseViewController: UIViewController {
             if button.backgroundColor == UIColor.darkGray {
                    button.backgroundColor = UIColor.blue
                 texField.isHidden = true
-                let newExpense = ExpenseGathegory(gathegory: texField.text!, expenses: nil)
+                let newExpense = ExpenseGathegory(gathegory: texField.text!, expenses: [])
                 expenses.append(newExpense)
                 tableView.reloadData()
                 self.view.endEditing(true)
