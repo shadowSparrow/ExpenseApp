@@ -113,9 +113,10 @@ class ExpenseDetailViewController: UIViewController {
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        //datePicker.locale = Locale(identifier: Const.Strings.localIdentifier)
+        datePicker.locale = Locale(identifier: "datePicker")
         datePicker.maximumDate = Date()
         datePicker.preferredDatePickerStyle = .compact
+        //datePicker.getSelectedDate(<#T##enteredDate: Date##Date#>)
         //datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
@@ -125,6 +126,7 @@ class ExpenseDetailViewController: UIViewController {
         let label = UILabel()
         label.text = elemensNames.addGathegoryPlaceHolder
         label.textAlignment = .right
+        label.text = "Выберите дату"
         textField.leftView = label
         textField.delegate = self
         textField.leftViewMode = .always
@@ -165,8 +167,11 @@ extension ExpenseDetailViewController {
         if button.backgroundColor == UIColor.lightGray {
             button.backgroundColor = UIColor.blue
             operationStackView.isHidden = true
-            let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: amountTextField.text ?? "0", date: dateTextField.text ?? "нет даты")
-            //print("THIS IS NEW EXXPENSE \(newExpense)")
+            let date = datePicker.date
+            let formattedDate = datePicker.getSelectedDate(date)
+            
+            let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: amountTextField.text ?? "0", date: formattedDate)
+            
             currentGarhegory.expenses?.append(newExpense)
             //print("THIS Array of Expenses \(currentGarhegory.expenses)")
             self.view.endEditing(true)

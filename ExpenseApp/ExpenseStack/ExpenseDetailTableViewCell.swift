@@ -12,7 +12,8 @@ class DetailTableViewCell: UITableViewCell {
     private let labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 18
+        stackView.spacing = 40
+        //stackView.backgroundColor = .cyan
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +22,7 @@ class DetailTableViewCell: UITableViewCell {
 
      lazy var expenseItemLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         //label.text = "на что"
         label.textColor = .label
         label.textAlignment = .center
@@ -30,7 +31,7 @@ class DetailTableViewCell: UITableViewCell {
 
     lazy var expenseTimeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         //label.text = "когда"
         label.textColor = .label
         label.textAlignment = .center
@@ -39,7 +40,7 @@ class DetailTableViewCell: UITableViewCell {
 
     lazy var expenseAmountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         //label.text = "сколько"
         label.textColor = .label
         label.textAlignment = .center
@@ -70,6 +71,8 @@ class DetailTableViewCell: UITableViewCell {
     private func setupConstraints() {
         labelsStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         labelsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        labelsStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
     
     func configure(with expenseData: ExpenseModel) {
@@ -77,6 +80,8 @@ class DetailTableViewCell: UITableViewCell {
         expenseTimeLabel.text = expenseData.date
         expenseAmountLabel.text = expenseData.amount
     }
+    
+   
     
 
 }

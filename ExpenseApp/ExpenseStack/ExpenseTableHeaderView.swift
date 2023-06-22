@@ -14,7 +14,7 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     private let labelsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 40
+        stackView.spacing = 50
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
