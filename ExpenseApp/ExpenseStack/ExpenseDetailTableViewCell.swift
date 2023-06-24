@@ -78,7 +78,8 @@ class DetailTableViewCell: UITableViewCell {
     func configure(with expenseData: ExpenseModel) {
         expenseItemLabel.text = expenseData.description
         expenseTimeLabel.text = expenseData.date
-        expenseAmountLabel.text = expenseData.amount
+        let amount = updateAmount(amount: expenseData.amount)
+        expenseAmountLabel.text = amount
     }
     
    

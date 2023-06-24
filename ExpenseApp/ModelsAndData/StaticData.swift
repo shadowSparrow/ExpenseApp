@@ -24,6 +24,8 @@ enum elemensNames {
     //Buttons
     static let addExpenseGathegory = "Добавить категорию расходов"
     static let addExpense = "Добавить расход"
+    static let addExpenseAmount = "Укажите сумму"
+    static let addExpenseData = "Укажите дату"
     
     //TextFields
     static let addGathegoryPlaceHolder = "наименование"
@@ -33,4 +35,10 @@ enum elemensNames {
     
     //TabBar
     static let tabBarIconName = "circle"
+}
+
+enum elementsIdentifiers {
+    static let datePickerID = "datePicker"
+    static let headerID = "header"
+    static let cellID = "cell"
 }

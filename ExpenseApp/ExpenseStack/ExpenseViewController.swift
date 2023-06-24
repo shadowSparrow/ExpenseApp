@@ -20,7 +20,7 @@ class ExpenseViewController: UIViewController {
         }()
     
     lazy var button: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 58))
+        let button = UIButton()
         button.setTitle(elemensNames.addExpenseGathegory, for: .normal)
             button.backgroundColor = .blue
             button.layer.cornerRadius = 24
@@ -30,7 +30,7 @@ class ExpenseViewController: UIViewController {
         }()
         
     lazy var texField: UITextField = {
-            let texField = UITextField(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            let texField = UITextField()
             texField.isHidden = true
             texField.delegate = self
             texField.attributedPlaceholder = NSAttributedString(

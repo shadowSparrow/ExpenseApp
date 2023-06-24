@@ -16,7 +16,7 @@ struct ExpenseGathegory {
 
 struct ExpenseModel  {
     let description: String
-    let amount: String
+    let amount: Int
     let date: String
 }
 

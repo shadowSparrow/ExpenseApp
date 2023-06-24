@@ -18,8 +18,8 @@ class ExpenseDetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         
-        tableView.register(DetailExpensesTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
-        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(DetailExpensesTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: elementsIdentifiers.headerID)
+        tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: elementsIdentifiers.cellID)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -75,7 +75,7 @@ class ExpenseDetailViewController: UIViewController {
         textField.backgroundColor = .white
         textField.delegate = self
         textField.attributedPlaceholder = NSAttributedString (
-            string: elemensNames.addGathegoryPlaceHolder,
+            string: elemensNames.addExpense,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
         textField.layer.cornerRadius = 4
@@ -93,9 +93,10 @@ class ExpenseDetailViewController: UIViewController {
         let textField = UITextField()
         textField.textAlignment = .left
         textField.backgroundColor = .white
+        
         textField.layer.cornerRadius = 4
         textField.attributedPlaceholder = NSAttributedString(
-            string: elemensNames.addGathegoryPlaceHolder,
+            string: elemensNames.addExpenseAmount,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
         textField.textColor = .label
@@ -113,20 +114,19 @@ class ExpenseDetailViewController: UIViewController {
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        datePicker.locale = Locale(identifier: "datePicker")
+        datePicker.locale = Locale(identifier: elementsIdentifiers.datePickerID)
         datePicker.maximumDate = Date()
         datePicker.preferredDatePickerStyle = .compact
-        //datePicker.getSelectedDate(<#T##enteredDate: Date##Date#>)
-        //datePicker.translatesAutoresizingMaskIntoConstraints = false
+        
         return datePicker
     }()
     
     private lazy var dateTextField: UITextField = {
         let textField = UITextField()
         let label = UILabel()
-        label.text = elemensNames.addGathegoryPlaceHolder
+        label.text = elemensNames.addExpenseData
         label.textAlignment = .right
-        label.text = "Выберите дату"
+        
         textField.leftView = label
         textField.delegate = self
         textField.leftViewMode = .always
@@ -169,22 +169,20 @@ extension ExpenseDetailViewController {
             operationStackView.isHidden = true
             let date = datePicker.date
             let formattedDate = datePicker.getSelectedDate(date)
-            
-            let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: amountTextField.text ?? "0", date: formattedDate)
+            let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: Int(amountTextField.text!) ?? 0, date: formattedDate)
             
             currentGarhegory.expenses?.append(newExpense)
             //print("THIS Array of Expenses \(currentGarhegory.expenses)")
             self.view.endEditing(true)
             tableView.reloadData()
+            purposeTextField.text = ""
+            amountTextField.text = ""
            }
            else if button.backgroundColor == UIColor.blue {
                button.backgroundColor = UIColor.lightGray
                operationStackView.isHidden = false
                purposeTextField.becomeFirstResponder()
                
-               
-            
-            
            }
     }
     
@@ -290,11 +288,7 @@ extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSourc
         guard let expenses = currentGarhegory.expenses else {return cell}
         
         cell.configure(with: expenses[indexPath.row])
-        /*
-        cell.expenseItemLabel.text = currentGarhegory.expenses![indexPath.row].description
-        cell.expenseAmountLabel.text = "Amount"
-        cell.expenseTimeLabel.text = "Time"
-        */
+      
         
         return cell
     }
@@ -324,12 +318,13 @@ extension ExpenseDetailViewController:  UITextFieldDelegate {
     }
         
         func textFieldDidBeginEditing(_ textField: UITextField) {
+            
+            
             isShowingKeybord = true
         }
         
         func textFieldDidEndEditing(_ textField: UITextField) {
             isShowingKeybord = false
-            
         }
     
 }
