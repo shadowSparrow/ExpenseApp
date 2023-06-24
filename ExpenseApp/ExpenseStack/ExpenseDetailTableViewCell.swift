@@ -47,8 +47,6 @@ class DetailTableViewCell: UITableViewCell {
         return label
     }()
     
-    
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -58,7 +56,6 @@ class DetailTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private func setupViews() {
         contentView.backgroundColor = .white
@@ -82,7 +79,12 @@ class DetailTableViewCell: UITableViewCell {
         expenseAmountLabel.text = amount
     }
     
-   
-    
-
+    func updateAmount(amount: Int) -> String? {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "ru_RU")
+        formatter.numberStyle = .currency
+        formatter.currencyDecimalSeparator = "."
+        let result = Double(amount / 100) + Double(amount % 100) / 100
+        return formatter.string(from: NSDecimalNumber(floatLiteral: result))
+    }
 }

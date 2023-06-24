@@ -20,11 +20,4 @@ extension UIDatePicker {
     
 }
 
-func updateAmount(amount: Int) -> String? {
-    let formatter = NumberFormatter()
-    formatter.locale = Locale(identifier: "ru_RU")
-    formatter.numberStyle = .currency
-    formatter.currencyDecimalSeparator = "."
-    let result = Double(amount / 100) + Double(amount % 100) / 100
-    return formatter.string(from: NSDecimalNumber(floatLiteral: result))
-}
+

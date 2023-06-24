@@ -10,6 +10,7 @@ import UIKit
 class ExpenseDetailViewController: UIViewController {
 
     var text: String = "Ремонт"
+    
     var currentGarhegory: ExpenseGathegory!
     
     private lazy var tableView: UITableView = {
@@ -28,7 +29,7 @@ class ExpenseDetailViewController: UIViewController {
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = elementsSize.expenseDetailVC.stackViewSpacing
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -42,7 +43,7 @@ class ExpenseDetailViewController: UIViewController {
         config.cornerStyle = .capsule
         button.configuration = config
         button.backgroundColor = .blue
-        button.layer.cornerRadius = 35
+        button.layer.cornerRadius = elementsSize.expenseDetailVC.buttonCornerRadius
         button.addTarget(self, action: #selector(addExpenseButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -51,7 +52,7 @@ class ExpenseDetailViewController: UIViewController {
     private let addExpenseLabel: UILabel = {
         let label = UILabel()
         label.text = elemensNames.addExpense
-        label.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: elementsSize.expenseDetailVC.labelTextSize, weight: .medium)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -63,7 +64,7 @@ class ExpenseDetailViewController: UIViewController {
         stackView.backgroundColor = .white
         stackView.isHidden = true
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = elementsSize.expenseDetailVC.stackViewSpacing
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -78,9 +79,9 @@ class ExpenseDetailViewController: UIViewController {
             string: elemensNames.addExpense,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
-        textField.layer.cornerRadius = 4
+        textField.layer.cornerRadius = elementsSize.expenseDetailVC.textFieldCornerRadius
         textField.textColor = .label
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        textField.font = UIFont.systemFont(ofSize: elementsSize.expenseDetailVC.textFieldTextSize, weight: .medium)
         textField.autocapitalizationType = .none
         textField.keyboardType = .default
         textField.leftViewMode = .always
@@ -94,20 +95,19 @@ class ExpenseDetailViewController: UIViewController {
         textField.textAlignment = .left
         textField.backgroundColor = .white
         
-        textField.layer.cornerRadius = 4
+        textField.layer.cornerRadius = elementsSize.expenseDetailVC.textFieldCornerRadius
         textField.attributedPlaceholder = NSAttributedString(
             string: elemensNames.addExpenseAmount,
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
         textField.textColor = .label
-        textField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        textField.font = UIFont.systemFont(ofSize: elementsSize.expenseDetailVC.textFieldTextSize, weight: .medium)
         textField.autocapitalizationType = .none
         textField.keyboardType = .decimalPad
         textField.delegate = self
         textField.leftViewMode = .always
         textField.clearButtonMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
-        //textField.isHidden = true
         return textField
     }()
 
@@ -131,7 +131,6 @@ class ExpenseDetailViewController: UIViewController {
         textField.delegate = self
         textField.leftViewMode = .always
         textField.rightView = datePicker
-        //textField.isHidden = true
         textField.rightViewMode = .always
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -143,7 +142,7 @@ class ExpenseDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = text
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20,weight: .medium)]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: elementsSize.expenseDetailVC.navigationTitleSize,weight: .medium)]
         self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationController?.navigationBar.tintColor = .black
         self.view.backgroundColor = UIColor.white
@@ -212,21 +211,21 @@ extension ExpenseDetailViewController {
             tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: guide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -300),
+            tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: elementsSize.expenseDetailVC.tableViewBottomConstraint),
             
-            addExpenseLabel.heightAnchor.constraint(equalToConstant: 64),
+            addExpenseLabel.heightAnchor.constraint(equalToConstant: elementsSize.expenseDetailVC.labelHeight),
             addExpenseLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
             addExpenseLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
             addExpenseLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
             
-            button.heightAnchor.constraint(equalToConstant: 70),
-            button.widthAnchor.constraint(equalToConstant: 70),
+            button.heightAnchor.constraint(equalToConstant: elementsSize.expenseDetailVC.buttonHeight),
+            button.widthAnchor.constraint(equalToConstant: elementsSize.expenseDetailVC.buttonWindh),
             button.topAnchor.constraint(equalTo: stackView.topAnchor),
             
             stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -16)
+            stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: elementsSize.expenseDetailVC.buttonBottonConstraint)
                         
             ])
         
@@ -236,23 +235,24 @@ extension ExpenseDetailViewController {
     private func setOperationElementsContraints() {
         let guide = self.view.safeAreaLayoutGuide
         
+        
         NSLayoutConstraint.activate([
         operationStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
         operationStackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
         operationStackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-        operationStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -16),
+        operationStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: elementsSize.expenseDetailVC.stackViewBottom),
         
-        purposeTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
-        purposeTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
-        purposeTextField.heightAnchor.constraint(equalToConstant: 40),
+        purposeTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: elementsSize.expenseDetailVC.textFieldLeadingingConstraint),
+        purposeTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: elementsSize.expenseDetailVC.textFieldTrailingConstraint),
+        purposeTextField.heightAnchor.constraint(equalToConstant: elementsSize.expenseDetailVC.textFieldHeightConstraint),
         
-        amountTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
-        amountTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
-        amountTextField.heightAnchor.constraint(equalToConstant: 40),
+        amountTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: elementsSize.expenseDetailVC.textFieldLeadingingConstraint),
+        amountTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: elementsSize.expenseDetailVC.textFieldTrailingConstraint),
+        amountTextField.heightAnchor.constraint(equalToConstant: elementsSize.expenseDetailVC.textFieldHeightConstraint),
         
-        dateTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
-        dateTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
-        dateTextField.heightAnchor.constraint(equalToConstant: 40)
+        dateTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: elementsSize.expenseDetailVC.textFieldLeadingingConstraint),
+        dateTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: elementsSize.expenseDetailVC.textFieldTrailingConstraint),
+        dateTextField.heightAnchor.constraint(equalToConstant: elementsSize.expenseDetailVC.textFieldHeightConstraint)
         
         ])
         
@@ -288,8 +288,6 @@ extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSourc
         guard let expenses = currentGarhegory.expenses else {return cell}
         
         cell.configure(with: expenses[indexPath.row])
-      
-        
         return cell
     }
     
@@ -299,7 +297,7 @@ extension ExpenseDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        37
+        elementsSize.expenseDetailVC.tableViewRowHeight
     }
     
     
@@ -318,8 +316,6 @@ extension ExpenseDetailViewController:  UITextFieldDelegate {
     }
         
         func textFieldDidBeginEditing(_ textField: UITextField) {
-            
-            
             isShowingKeybord = true
         }
         
