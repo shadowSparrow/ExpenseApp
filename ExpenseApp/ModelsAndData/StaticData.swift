@@ -46,14 +46,19 @@ enum elementsIdentifiers {
 
 enum elementsSize {
     
-    
     enum expenseVC {
-        static let rowHeight = 64
-        static let tableBottomConstraint = 60
-        static let buttonLeadingConstraint = 16
-        static let buttonTrailingConstraint = -16
-        static let buttonHeight = 58
-        static let buttonBottonConstraint = -229
+        static let rowHeight = 64.0
+        static let tableViewBottomConstraint = -60.0
+        static let buttonLeadingConstraint = 16.0
+        static let buttonTrailingConstraint = -16.0
+        static let buttonHeight = 50.0
+        static let buttonBottomConstraint = -229.0
+        static let buttonCornerRadius = 24.0
+        static let textFieldCornerRadius = 4.0
+        static let textFieldTopConstraint = 8.0
+        static let textFieldLeadingConstraint = 16.0
+        static let textFieldTrailingConstraint = -16.0
+        static let textFieldHeight = 50.0
     }
     
     
@@ -86,18 +91,4 @@ enum elementsSize {
     
     
 }
-/*
-operationStackView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -16),
 
-purposeTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
-purposeTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
-purposeTextField.heightAnchor.constraint(equalToConstant: 40),
-
-amountTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
-amountTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
-amountTextField.heightAnchor.constraint(equalToConstant: 40),
-
-dateTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 8),
-dateTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
-dateTextField.heightAnchor.constraint(equalToConstant: 40)
-*/
