@@ -15,23 +15,27 @@ class ChartViewController: UIViewController {
         stackView.spacing = 16
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
+        stackView.backgroundColor = .blue
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
-    /*
-    private lazy var weekButton: CustomTimeLapseButton = {
-        let button = CustomTimeLapseButton(title: Const.Strings.weekButtonTitle)
+    private lazy var weekButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(elemensNames.weekButtonName, for: .normal)
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    self?.showTimeIntervalSelectionScreen(type: .week)
+                    //self?.showTimeIntervalSelectionScreen(type: .week)
                 }
             ),
             for: .touchUpInside
         )
         return button
     }()
+    
 
+/*
     private lazy var monthButton: CustomTimeLapseButton = {
         let button = CustomTimeLapseButton(title: Const.Strings.monthButtonTitle)
         button.addAction(
@@ -104,6 +108,7 @@ class ChartViewController: UIViewController {
 
         self.view.backgroundColor = .white
         setUIElements()
+        setConstraints()
         // Do any additional setup after loading the view.
     }
     
@@ -120,6 +125,15 @@ class ChartViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         
+        hStackView.addArrangedSubview(weekButton)
+        self.view.addSubview(hStackView)
+        
+    }
+    
+    private func setConstraints() {
+        hStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
+        hStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
+        hStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
     }
     
 }

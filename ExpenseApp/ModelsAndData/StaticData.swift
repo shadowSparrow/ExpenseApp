@@ -37,6 +37,7 @@ enum elemensNames {
     static let tabBarIconName = "circle"
     
     static let graphVCtitle = "График"
+    static let weekButtonName = "Неделя"
     static let expenseVCtitle = "Расходы"
     static let incomeVCtitle = "Доходы"
   
