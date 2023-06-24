@@ -35,6 +35,14 @@ enum elemensNames {
     
     //TabBar
     static let tabBarIconName = "circle"
+    
+    static let graphVCtitle = "График"
+    static let expenseVCtitle = "Расходы"
+    static let incomeVCtitle = "Доходы"
+  
+    
+    
+    
 }
 
 enum elementsIdentifiers {
@@ -88,6 +96,12 @@ enum elementsSize {
         static let buttonCornerRadius = 35.0
         static let stackViewSpacing = 16.0
     }
+    
+    
+    enum GraphVC {
+        static let titleFontSize = 26.0
+    }
+  
     
     
 }

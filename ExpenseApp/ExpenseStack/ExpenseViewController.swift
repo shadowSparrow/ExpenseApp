@@ -58,6 +58,16 @@ class ExpenseViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     private func setUIElements() {
+        title = elemensNames.expenseVCtitle
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.shadowImage = UIImage()
+        navBarAppearance.shadowColor = .separator
+        navBarAppearance.titleTextAttributes = [
+            .font: UIFont.systemFont(ofSize: elementsSize.GraphVC.titleFontSize)
+        ]
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         self.view.addSubview(tableView)
         self.view.addSubview(button)
         self.view.addSubview(texField)
