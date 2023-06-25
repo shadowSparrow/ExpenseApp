@@ -20,4 +20,14 @@ extension UIDatePicker {
     
 }
 
+extension UIButton {
+    
+    func underLine() {
+        
+        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
+        let underlineAttributedString = NSAttributedString(string: "StringWithUnderLine", attributes: underlineAttribute)
+        titleLabel?.attributedText = underlineAttributedString
+    }
+}
+
 

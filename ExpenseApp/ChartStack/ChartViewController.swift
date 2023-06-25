@@ -15,16 +15,19 @@ class ChartViewController: UIViewController {
         stackView.spacing = 16
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
-        stackView.backgroundColor = .blue
+        //stackView.backgroundColor = .blue
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
     private lazy var weekButton: UIButton = {
         let button = UIButton()
-        //let title = NSAttributedString(markdownString: <#T##String#>, options: <#T##NSAttributedStringMarkdownParsingOptions?#>, baseURL: <#T##URL?#>, including: <#T##AttributeScope.Protocol#>)
         button.setTitle(elemensNames.weekButtonName, for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.underLine()
+        //button.layer.borderWidth = 1
+        //button.layer.borderColor = UIColor.black.cgColor
+        
         
         /*
         button.addAction(
@@ -43,6 +46,10 @@ class ChartViewController: UIViewController {
         let button = UIButton()
         button.setTitle(elemensNames.monthButtonName, for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.underLine()
+        
+        //button.layer.borderWidth = 1
+        //button.layer.borderColor = UIColor.black.cgColor
         /*
         button.addAction(
             UIAction(
@@ -60,6 +67,10 @@ class ChartViewController: UIViewController {
         let button = UIButton()
         button.setTitle(elemensNames.quarterButtonName, for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.underLine()
+        
+        //button.layer.borderWidth = 1
+        //button.layer.borderColor = UIColor.black.cgColor
         /*
         button.addAction(
             UIAction(
@@ -77,6 +88,10 @@ class ChartViewController: UIViewController {
         let button = UIButton()
         button.setTitle(elemensNames.yearButtonName, for: .normal)
         button.setTitleColor(.black, for: .normal)
+        button.underLine()
+        
+        //button.layer.borderWidth = 1
+        //button.layer.borderColor = UIColor.black.cgColor
         /*
         button.addAction(
             UIAction(
@@ -150,8 +165,8 @@ class ChartViewController: UIViewController {
     
     private func setConstraints() {
         hStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        hStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 0).isActive = true
-        hStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: 0).isActive = true
+        hStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        hStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
     }
     
 }
