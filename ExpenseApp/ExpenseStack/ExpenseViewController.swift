@@ -25,6 +25,7 @@ class ExpenseViewController: UIViewController {
             button.backgroundColor = .blue
         button.layer.cornerRadius = elementsSize.expenseVC.buttonCornerRadius
             button.addTarget(self, action: #selector(addExpensesButtonPressed), for: .touchUpInside)
+        
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
@@ -41,6 +42,8 @@ class ExpenseViewController: UIViewController {
         texField.layer.cornerRadius = elementsSize.expenseVC.textFieldCornerRadius
             texField.backgroundColor = .white
             texField.textColor = .black
+        texField.underlined()
+        
             texField.translatesAutoresizingMaskIntoConstraints = false
             return texField
         }()
@@ -50,6 +53,7 @@ class ExpenseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        texField.underlined()
         setUIElements()
         setConstraints()
         setKeyboardNotification()
@@ -68,10 +72,13 @@ class ExpenseViewController: UIViewController {
         ]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        texField.underlined()
         self.view.addSubview(tableView)
         self.view.addSubview(button)
         self.view.addSubview(texField)
     }
+    
+   
     
     private func setConstraints() {
         let guide = self.view.safeAreaLayoutGuide
