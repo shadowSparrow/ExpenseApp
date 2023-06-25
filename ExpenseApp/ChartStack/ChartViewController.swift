@@ -22,7 +22,11 @@ class ChartViewController: UIViewController {
 
     private lazy var weekButton: UIButton = {
         let button = UIButton()
+        //let title = NSAttributedString(markdownString: <#T##String#>, options: <#T##NSAttributedStringMarkdownParsingOptions?#>, baseURL: <#T##URL?#>, including: <#T##AttributeScope.Protocol#>)
         button.setTitle(elemensNames.weekButtonName, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        
+        /*
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
@@ -31,50 +35,61 @@ class ChartViewController: UIViewController {
             ),
             for: .touchUpInside
         )
+         */
         return button
     }()
     
-
-/*
-    private lazy var monthButton: CustomTimeLapseButton = {
-        let button = CustomTimeLapseButton(title: Const.Strings.monthButtonTitle)
+    private lazy var monthButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(elemensNames.monthButtonName, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        /*
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    self?.showTimeIntervalSelectionScreen(type: .month)
+                    //self?.showTimeIntervalSelectionScreen(type: .week)
                 }
             ),
             for: .touchUpInside
         )
+         */
         return button
     }()
 
-    private lazy var quarterButton: CustomTimeLapseButton = {
-        let button = CustomTimeLapseButton(title: Const.Strings.quarterButtonTitle)
+    private lazy var quarterButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(elemensNames.quarterButtonName, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        /*
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    self?.showTimeIntervalSelectionScreen(type: .quarter)
+                    //self?.showTimeIntervalSelectionScreen(type: .week)
                 }
             ),
             for: .touchUpInside
         )
+         */
         return button
     }()
-
-    private lazy var yearButton: CustomTimeLapseButton = {
-        let button = CustomTimeLapseButton(title: Const.Strings.yearButtonTitle)
+    
+    private lazy var yearButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(elemensNames.yearButtonName, for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        /*
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    self?.showTimeIntervalSelectionScreen(type: .year)
+                    //self?.showTimeIntervalSelectionScreen(type: .week)
                 }
             ),
             for: .touchUpInside
         )
+         */
         return button
     }()
-*/
+
     private let backViewChart: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -126,6 +141,9 @@ class ChartViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         
         hStackView.addArrangedSubview(weekButton)
+        hStackView.addArrangedSubview(monthButton)
+        hStackView.addArrangedSubview(quarterButton)
+        hStackView.addArrangedSubview(yearButton)
         self.view.addSubview(hStackView)
         
     }

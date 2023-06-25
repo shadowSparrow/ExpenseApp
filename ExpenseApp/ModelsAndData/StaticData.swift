@@ -38,6 +38,10 @@ enum elemensNames {
     
     static let graphVCtitle = "График"
     static let weekButtonName = "Неделя"
+    static let monthButtonName = "Месяц"
+    static let quarterButtonName = "Квартал"
+    static let yearButtonName = "Год"
+    
     static let expenseVCtitle = "Расходы"
     static let incomeVCtitle = "Доходы"
   
