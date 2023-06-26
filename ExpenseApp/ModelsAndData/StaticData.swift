@@ -44,10 +44,6 @@ enum elemensNames {
     
     static let expenseVCtitle = "Расходы"
     static let incomeVCtitle = "Доходы"
-  
-    
-    
-    
 }
 
 enum elementsIdentifiers {
@@ -65,7 +61,7 @@ enum elementsSize {
         static let buttonLeadingConstraint = 16.0
         static let buttonTrailingConstraint = -16.0
         static let buttonHeight = 50.0
-        static let buttonBottomConstraint = -229.0
+        static let buttonBottomConstraint = -200.0
         static let buttonCornerRadius = 24.0
         static let textFieldCornerRadius = 4.0
         static let textFieldTopConstraint = 8.0

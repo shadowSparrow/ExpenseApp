@@ -25,13 +25,13 @@ class ExpenseViewController: UIViewController {
             button.backgroundColor = .blue
         button.layer.cornerRadius = elementsSize.expenseVC.buttonCornerRadius
             button.addTarget(self, action: #selector(addExpensesButtonPressed), for: .touchUpInside)
-        
+        //button.isHidden = true
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
         
     lazy var texField: UITextField = {
-            let texField = UITextField()
+            let texField = UITextField(frame: CGRect(x: 0, y: 0, width: 150, height: 50))
             texField.isHidden = true
             texField.delegate = self
             texField.attributedPlaceholder = NSAttributedString(
@@ -42,7 +42,7 @@ class ExpenseViewController: UIViewController {
         texField.layer.cornerRadius = elementsSize.expenseVC.textFieldCornerRadius
             texField.backgroundColor = .white
             texField.textColor = .black
-        texField.underlined()
+     
         
             texField.translatesAutoresizingMaskIntoConstraints = false
             return texField
@@ -72,7 +72,7 @@ class ExpenseViewController: UIViewController {
         ]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        texField.underlined()
+
         self.view.addSubview(tableView)
         self.view.addSubview(button)
         self.view.addSubview(texField)
@@ -92,11 +92,12 @@ class ExpenseViewController: UIViewController {
         button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: elementsSize.expenseVC.buttonTrailingConstraint).isActive = true
         button.heightAnchor.constraint(equalToConstant: elementsSize.expenseVC.buttonHeight).isActive = true
         button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: elementsSize.expenseVC.buttonBottomConstraint).isActive = true
-        
+//
         texField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        texField.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: elementsSize.expenseVC.textFieldTopConstraint).isActive = true
+        //texField.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: elementsSize.expenseVC.textFieldTopConstraint).isActive = true
         texField.leadingAnchor.constraint(equalTo: guide.leadingAnchor , constant: elementsSize.expenseVC.textFieldLeadingConstraint).isActive = true
         texField.trailingAnchor.constraint(equalTo: guide.trailingAnchor , constant: elementsSize.expenseVC.buttonTrailingConstraint).isActive = true
+        texField.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -16).isActive = true
         texField.heightAnchor.constraint(equalToConstant: elementsSize.expenseVC.buttonHeight).isActive = true
     }
     

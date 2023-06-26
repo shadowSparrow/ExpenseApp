@@ -32,11 +32,11 @@ extension UIButton {
 
 extension UITextField {
     
-    func underlined(){
+    func underlined() {
             let border = CALayer()
-            let width = CGFloat(1.0)
-        border.borderColor = UIColor.black.cgColor
-            border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+        let width = CGFloat(0.5)
+            border.borderColor = UIColor.black.cgColor
+        border.frame = CGRect(x: 0, y:  self.frame.height - width, width: self.frame.width-20, height: 1)
             border.borderWidth = width
             self.layer.addSublayer(border)
             self.layer.masksToBounds = true
@@ -44,4 +44,4 @@ extension UITextField {
  
 }
 
-
+//self.frame.size.height - width
