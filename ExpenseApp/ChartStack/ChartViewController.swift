@@ -107,7 +107,7 @@ class ChartViewController: UIViewController {
 
     private let backViewChart: UIView = {
         let view = UIView(frame: CGRect(origin: CGPoint(x:10 , y: 10), size: CGSize(width: 0, height: 300)))
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
         view.layer.borderColor = UIColor.separator.cgColor
         view.layer.borderWidth = 1.0
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -123,24 +123,25 @@ class ChartViewController: UIViewController {
         return label
     }()
     */
-/*
+
     private let chartInformationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        //label.text = Const.Strings.chartInformationLabelTitle
+        label.text = elemensNames.chartInfoLabel
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 2
         label.textColor = .tertiaryLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    */
+    
 
    // private let graphSymbolsStackView = GraphSymbolsStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(hexString: "#F8F9F9")
         setUIElements()
         setConstraints()
         // Do any additional setup after loading the view.
@@ -166,6 +167,7 @@ class ChartViewController: UIViewController {
         
         self.view.addSubview(stackView)
         self.view.addSubview(backViewChart)
+        self.view.addSubview(chartInformationLabel)
     }
     
     private func setConstraints() {
@@ -176,6 +178,10 @@ class ChartViewController: UIViewController {
         backViewChart.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
         backViewChart.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
         backViewChart.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
+        chartInformationLabel.topAnchor.constraint(equalTo: backViewChart.topAnchor, constant: 32).isActive = true
+        chartInformationLabel.bottomAnchor.constraint(equalTo: backViewChart.bottomAnchor, constant: -32).isActive = true
+        chartInformationLabel.leadingAnchor.constraint(equalTo: backViewChart.leadingAnchor, constant: 16).isActive = true
+        chartInformationLabel.trailingAnchor.constraint(equalTo: backViewChart.trailingAnchor, constant: -16).isActive = true
     }
     
 }

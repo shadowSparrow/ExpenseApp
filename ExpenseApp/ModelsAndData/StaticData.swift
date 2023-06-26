@@ -5,7 +5,7 @@
 //  Created by mac on 19.06.2023.
 //
 
-import Foundation
+import UIKit
 
 enum Tabs: Int, CaseIterable {
     case income
@@ -18,6 +18,11 @@ enum Tabs: Int, CaseIterable {
         default: return "Расход"
         }
     }
+}
+
+
+enum Colors {
+    static let background = UIColor(hexString: "#F8F9F9")
 }
 
 enum elemensNames {
@@ -44,6 +49,7 @@ enum elemensNames {
     
     static let expenseVCtitle = "Расходы"
     static let incomeVCtitle = "Доходы"
+    static let chartInfoLabel = "Выберите период для отображения графика" 
 }
 
 enum elementsIdentifiers {

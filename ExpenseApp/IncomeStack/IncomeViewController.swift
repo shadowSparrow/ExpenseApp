@@ -31,7 +31,7 @@ class IncomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .cyan
+        self.view.backgroundColor = Colors.background
         setUIElements()
         // Do any additional setup after loading the view.
     }
