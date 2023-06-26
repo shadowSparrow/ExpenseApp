@@ -48,6 +48,7 @@ class ChartViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.underLine()
         
+        button.addTarget(self, action: #selector(showDatePickers), for: .touchUpInside)
         //button.layer.borderWidth = 1
         //button.layer.borderColor = UIColor.black.cgColor
         /*
@@ -182,6 +183,10 @@ class ChartViewController: UIViewController {
         chartInformationLabel.bottomAnchor.constraint(equalTo: backViewChart.bottomAnchor, constant: -32).isActive = true
         chartInformationLabel.leadingAnchor.constraint(equalTo: backViewChart.leadingAnchor, constant: 16).isActive = true
         chartInformationLabel.trailingAnchor.constraint(equalTo: backViewChart.trailingAnchor, constant: -16).isActive = true
+    }
+    
+    @objc func showDatePickers() {
+        let view = DatePickerView()
     }
     
 }
