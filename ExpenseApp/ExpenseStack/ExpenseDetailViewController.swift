@@ -71,9 +71,10 @@ class ExpenseDetailViewController: UIViewController {
     }()
     
     private lazy var purposeTextField: UITextField = {
-        let textField = UITextField()
+        let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 220, height: 40 ))
         textField.textAlignment = .left
         textField.backgroundColor = .white
+        textField.underlined()
         textField.delegate = self
         textField.attributedPlaceholder = NSAttributedString (
             string: elemensNames.addExpense,
@@ -91,7 +92,7 @@ class ExpenseDetailViewController: UIViewController {
     }()
 
     private lazy var amountTextField: UITextField = {
-        let textField = UITextField()
+        let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
         textField.textAlignment = .left
         textField.backgroundColor = .white
         
@@ -104,6 +105,7 @@ class ExpenseDetailViewController: UIViewController {
         textField.font = UIFont.systemFont(ofSize: elementsSize.expenseDetailVC.textFieldTextSize, weight: .medium)
         textField.autocapitalizationType = .none
         textField.keyboardType = .decimalPad
+        textField.underlined()
         textField.delegate = self
         textField.leftViewMode = .always
         textField.clearButtonMode = .always
