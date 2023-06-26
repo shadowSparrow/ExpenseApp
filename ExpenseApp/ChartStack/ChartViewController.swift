@@ -9,7 +9,7 @@ import UIKit
 
 class ChartViewController: UIViewController {
 
-    private let hStackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 16
@@ -106,13 +106,15 @@ class ChartViewController: UIViewController {
     }()
 
     private let backViewChart: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
+        let view = UIView(frame: CGRect(origin: CGPoint(x:10 , y: 10), size: CGSize(width: 0, height: 300)))
+        view.backgroundColor = .lightGray
         view.layer.borderColor = UIColor.separator.cgColor
-        view.layer.borderWidth = 0.5
+        view.layer.borderWidth = 1.0
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
+    /*
     private let titleChartViewLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -120,7 +122,8 @@ class ChartViewController: UIViewController {
         label.textColor = .label
         return label
     }()
-
+    */
+/*
     private let chartInformationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -130,6 +133,7 @@ class ChartViewController: UIViewController {
         label.textColor = .tertiaryLabel
         return label
     }()
+    */
 
    // private let graphSymbolsStackView = GraphSymbolsStackView()
     
@@ -155,18 +159,23 @@ class ChartViewController: UIViewController {
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         
-        hStackView.addArrangedSubview(weekButton)
-        hStackView.addArrangedSubview(monthButton)
-        hStackView.addArrangedSubview(quarterButton)
-        hStackView.addArrangedSubview(yearButton)
-        self.view.addSubview(hStackView)
+        stackView.addArrangedSubview(weekButton)
+        stackView.addArrangedSubview(monthButton)
+        stackView.addArrangedSubview(quarterButton)
+        stackView.addArrangedSubview(yearButton)
         
+        self.view.addSubview(stackView)
+        self.view.addSubview(backViewChart)
     }
     
     private func setConstraints() {
-        hStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        hStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
-        hStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+        stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+        backViewChart.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 32).isActive = true
+        backViewChart.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        backViewChart.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+        backViewChart.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
     }
     
 }
