@@ -44,7 +44,7 @@ class DatePickerView: UIStackView {
     }()
     
    
-    let button: UIButton = {
+    private let button: UIButton = {
         let button = UIButton()
         button.setTitle("Готово", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -53,14 +53,14 @@ class DatePickerView: UIStackView {
         return button
     }()
     
-    let horizontalStackView: UIStackView = {
+     private let horizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 16
         stackView.axis = .horizontal
         return stackView
     }()
     
-    let secondStackStackView: UIStackView = {
+   private let secondStackStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.spacing = 16
         stackView.axis = .horizontal

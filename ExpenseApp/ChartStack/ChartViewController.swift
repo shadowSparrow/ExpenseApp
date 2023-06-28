@@ -25,21 +25,19 @@ class ChartViewController: UIViewController {
         button.setTitle(elemensNames.weekButtonName, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.underLine()
-        button.addTarget(self, action: #selector(showDatePickers), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(showDatePickers), for: .touchUpInside)
         //button.layer.borderWidth = 1
         //button.layer.borderColor = UIColor.black.cgColor
         
-        
-        /*
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    //self?.showTimeIntervalSelectionScreen(type: .week)
+                    self?.showDatePickers(type: .week)
                 }
             ),
             for: .touchUpInside
         )
-         */
+         
         return button
     }()
     
@@ -48,20 +46,14 @@ class ChartViewController: UIViewController {
         button.setTitle(elemensNames.monthButtonName, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.underLine()
-        
-        button.addTarget(self, action: #selector(showDatePickers), for: .touchUpInside)
-        //button.layer.borderWidth = 1
-        //button.layer.borderColor = UIColor.black.cgColor
-        /*
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    //self?.showTimeIntervalSelectionScreen(type: .week)
+                    self?.showDatePickers(type: .month)
                 }
             ),
             for: .touchUpInside
         )
-         */
         return button
     }()
 
@@ -73,16 +65,16 @@ class ChartViewController: UIViewController {
         
         //button.layer.borderWidth = 1
         //button.layer.borderColor = UIColor.black.cgColor
-        /*
+
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    //self?.showTimeIntervalSelectionScreen(type: .week)
+                    self?.showDatePickers(type: .quarter)
                 }
             ),
             for: .touchUpInside
         )
-         */
+        
         return button
     }()
     
@@ -94,16 +86,15 @@ class ChartViewController: UIViewController {
         
         //button.layer.borderWidth = 1
         //button.layer.borderColor = UIColor.black.cgColor
-        /*
+        
         button.addAction(
             UIAction(
                 handler: { [weak self] _ in
-                    //self?.showTimeIntervalSelectionScreen(type: .week)
+                    self?.showDatePickers(type: .year)
                 }
             ),
             for: .touchUpInside
         )
-         */
         return button
     }()
 
@@ -116,16 +107,6 @@ class ChartViewController: UIViewController {
         return view
     }()
 
-    /*
-    private let titleChartViewLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        //label.font = Const.Fonts.helveticaNeueCyrBlack(size: 12)
-        label.textColor = .label
-        return label
-    }()
-    */
-
     private let chartInformationLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -137,8 +118,6 @@ class ChartViewController: UIViewController {
         return label
     }()
     
-
-   // private let graphSymbolsStackView = GraphSymbolsStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,9 +165,9 @@ class ChartViewController: UIViewController {
         chartInformationLabel.trailingAnchor.constraint(equalTo: backViewChart.trailingAnchor, constant: -16).isActive = true
     }
     
-    @objc func showDatePickers() {
+    private func showDatePickers(type: DatePickerType) {
         let view = DatePickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        view.configure(type: .quarter)
+        view.configure(type: type)
         self.view.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         // Constraints
