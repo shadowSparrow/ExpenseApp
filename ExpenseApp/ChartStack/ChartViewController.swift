@@ -25,6 +25,7 @@ class ChartViewController: UIViewController {
         button.setTitle(elemensNames.weekButtonName, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.underLine()
+        button.addTarget(self, action: #selector(showDatePickers), for: .touchUpInside)
         //button.layer.borderWidth = 1
         //button.layer.borderColor = UIColor.black.cgColor
         
@@ -186,7 +187,16 @@ class ChartViewController: UIViewController {
     }
     
     @objc func showDatePickers() {
-        let view = DatePickerView()
+        let view = DatePickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        view.configure(type: .quarter)
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        // Constraints
+        view.topAnchor.constraint(equalTo: backViewChart.bottomAnchor, constant: 40).isActive = true
+        view.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        view.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
+        
     }
     
 }
