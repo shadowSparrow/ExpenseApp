@@ -188,7 +188,7 @@ extension ExpenseDetailViewController {
     }
     
     private func setUIElements() {
-        
+        tabBarController?.tabBar.isHidden = true
         self.view.addSubview(tableView)
         stackView.addArrangedSubview(button)
         stackView.addArrangedSubview(addExpenseLabel)

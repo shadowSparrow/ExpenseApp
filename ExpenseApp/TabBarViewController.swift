@@ -12,7 +12,9 @@ class TabBarViewController: UITabBarController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         //Прописать в ручную на занятии
         let controllers: [UINavigationController] = Tabs.allCases.map { tab in
             let controller = UINavigationController(rootViewController: setController(for: tab))

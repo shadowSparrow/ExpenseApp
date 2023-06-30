@@ -30,6 +30,13 @@ class DatePickerView: UIStackView {
         return datePicker
     }()
     
+    let datePickerView: UIPickerView = {
+        let datePicker = UIPickerView()
+        //datePicker.selectRow(<#T##row: Int##Int#>, inComponent: <#T##Int#>, animated: <#T##Bool#>)
+        
+        return datePicker
+    }()
+    
     private let label: UILabel = {
         let label = UILabel()
         label.textColor = .black

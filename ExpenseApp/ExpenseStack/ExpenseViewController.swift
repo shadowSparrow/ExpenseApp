@@ -61,8 +61,15 @@ class ExpenseViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     private func setUIElements() {
         title = elemensNames.expenseVCtitle
+        tabBarController?.tabBar.isHidden = false
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.shadowImage = UIImage()
@@ -159,8 +166,8 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.cellForRow(at: indexPath)
         detailVC.text = cell?.textLabel?.text ?? "Wrong"
         detailVC.currentGarhegory = expenses[indexPath.row]
-        //print(detailVC.currentGarhegory)
-        show(detailVC, sender: nil)
+        
+        navigationController?.pushViewController(detailVC, animated: true)
     }
      
     
