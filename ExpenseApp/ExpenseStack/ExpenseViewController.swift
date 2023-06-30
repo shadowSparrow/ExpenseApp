@@ -57,11 +57,7 @@ class ExpenseViewController: UIViewController {
         setUIElements()
         setConstraints()
         setKeyboardNotification()
-        
-        
-        // Do any additional setup after loading the view.
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
@@ -85,8 +81,6 @@ class ExpenseViewController: UIViewController {
         self.view.addSubview(texField)
     }
     
-   
-    
     private func setConstraints() {
         let guide = self.view.safeAreaLayoutGuide
         
@@ -99,9 +93,8 @@ class ExpenseViewController: UIViewController {
         button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: elementsSize.expenseVC.buttonTrailingConstraint).isActive = true
         button.heightAnchor.constraint(equalToConstant: elementsSize.expenseVC.buttonHeight).isActive = true
         button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: elementsSize.expenseVC.buttonBottomConstraint).isActive = true
-//
+
         texField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        //texField.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: elementsSize.expenseVC.textFieldTopConstraint).isActive = true
         texField.leadingAnchor.constraint(equalTo: guide.leadingAnchor , constant: elementsSize.expenseVC.textFieldLeadingConstraint).isActive = true
         texField.trailingAnchor.constraint(equalTo: guide.trailingAnchor , constant: elementsSize.expenseVC.buttonTrailingConstraint).isActive = true
         texField.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -16).isActive = true
@@ -138,9 +131,6 @@ class ExpenseViewController: UIViewController {
     @objc func keyboardWillHide(notification: Notification) {
             self.view.frame.origin.y = 0
         }
-
-   
-
 }
 
 extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
@@ -170,7 +160,6 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(detailVC, animated: true)
     }
      
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         elementsSize.expenseVC.rowHeight
     }

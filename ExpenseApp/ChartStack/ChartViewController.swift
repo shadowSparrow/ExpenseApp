@@ -9,6 +9,9 @@ import UIKit
 
 class ChartViewController: UIViewController {
 
+    
+    private var datePickerView: DatePickerView?
+    
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -63,8 +66,6 @@ class ChartViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.underLine()
         
-        //button.layer.borderWidth = 1
-        //button.layer.borderColor = UIColor.black.cgColor
 
         button.addAction(
             UIAction(
@@ -84,8 +85,6 @@ class ChartViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.underLine()
         
-        //button.layer.borderWidth = 1
-        //button.layer.borderColor = UIColor.black.cgColor
         
         button.addAction(
             UIAction(
@@ -117,6 +116,8 @@ class ChartViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    
     
     
     override func viewDidLoad() {
@@ -166,9 +167,15 @@ class ChartViewController: UIViewController {
     }
     
     private func showDatePickers(type: DatePickerType) {
+        
+        
+        view.isUserInteractionEnabled = false
         let view = DatePickerView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         view.configure(type: type)
         self.view.addSubview(view)
+        
+        
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         // Constraints
         view.topAnchor.constraint(equalTo: backViewChart.bottomAnchor, constant: 40).isActive = true
@@ -176,6 +183,15 @@ class ChartViewController: UIViewController {
         view.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
         view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10).isActive = true
         
+        view.button.addTarget(self, action: #selector(createGraph), for: .touchUpInside)
+        
+       
+    }
+    
+    @objc func createGraph() {
+        stackView.isUserInteractionEnabled = false
+        guard let datePickerView = datePickerView else {return}
+        datePickerView.isHidden = true
     }
     
 }

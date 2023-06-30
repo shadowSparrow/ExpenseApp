@@ -32,7 +32,6 @@ class DatePickerView: UIStackView {
     
     let datePickerView: UIPickerView = {
         let datePicker = UIPickerView()
-        //datePicker.selectRow(<#T##row: Int##Int#>, inComponent: <#T##Int#>, animated: <#T##Bool#>)
         
         return datePicker
     }()
@@ -51,12 +50,28 @@ class DatePickerView: UIStackView {
     }()
     
    
-    private let button: UIButton = {
+     let button: UIButton = {
         let button = UIButton()
         button.setTitle("Готово", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 10
+        
+        //button.addTarget(self, action: #selector(createGraph), for: .touchUpInside)
+        
+        /*
+        button.addAction(
+            UIAction(
+                handler: { [weak self] _ in
+                
+
+                    
+                }
+            ),
+            for: .touchUpInside
+        )
+        */
+        
         return button
     }()
     
@@ -119,6 +134,10 @@ class DatePickerView: UIStackView {
             self.addArrangedSubview(button)
         }
 }
+    
+    @objc func createGraph(){
+        self.isHidden = true
+    }
 }
 
 
