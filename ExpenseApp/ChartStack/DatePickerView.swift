@@ -57,21 +57,6 @@ class DatePickerView: UIStackView {
         button.backgroundColor = .blue
         button.layer.cornerRadius = 10
         
-        //button.addTarget(self, action: #selector(createGraph), for: .touchUpInside)
-        
-        /*
-        button.addAction(
-            UIAction(
-                handler: { [weak self] _ in
-                
-
-                    
-                }
-            ),
-            for: .touchUpInside
-        )
-        */
-        
         return button
     }()
     

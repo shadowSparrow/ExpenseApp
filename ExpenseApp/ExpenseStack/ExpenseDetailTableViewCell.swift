@@ -66,10 +66,11 @@ class DetailTableViewCell: UITableViewCell {
     }
     
     private func setupConstraints() {
-        labelsStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        labelsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        labelsStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+     
+        labelsStackView.snp_makeConstraints { make in
+            make.leading.trailing.equalTo(self).inset(0)
+            make.centerX.centerY.equalTo(self.snp.center)
+        }
     }
     
     func configure(with expenseData: ExpenseModel) {

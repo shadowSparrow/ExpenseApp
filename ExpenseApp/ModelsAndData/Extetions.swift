@@ -64,4 +64,3 @@ extension UIColor {
     }
 }
 
-//self.frame.size.height - width

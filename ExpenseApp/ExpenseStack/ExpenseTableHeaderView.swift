@@ -77,6 +77,7 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     private func setupViews() {
         contentView.backgroundColor = .white
         contentView.addSubview(labelsStackView)
+        //self.frame.
         labelsStackView.addArrangedSubview(expenseItemLabel)
         labelsStackView.addArrangedSubview(expenseTimeLabel)
         labelsStackView.addArrangedSubview(expenseAmountLabel)
@@ -85,7 +86,10 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     }
 
     private func setupConstraints() {
-        labelsStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        labelsStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    }
+     
+        labelsStackView.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(self.snp_center)
+        }
+        
+         }
 }

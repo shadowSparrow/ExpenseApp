@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import SnapKit
 
 class ChartViewController: UIViewController {
 
@@ -137,7 +138,7 @@ class ChartViewController: UIViewController {
         navBarAppearance.shadowImage = UIImage()
         navBarAppearance.shadowColor = .separator
         navBarAppearance.titleTextAttributes = [
-            .font: UIFont.systemFont(ofSize: elementsSize.GraphVC.titleFontSize)
+            .font: UIFont.systemFont(ofSize: 24)
         ]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
@@ -150,20 +151,37 @@ class ChartViewController: UIViewController {
         self.view.addSubview(stackView)
         self.view.addSubview(backViewChart)
         self.view.addSubview(chartInformationLabel)
+        
     }
     
     private func setConstraints() {
+       
+        stackView.snp.makeConstraints { make in
+            make.trailing.leading.top.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.height.equalTo(view.snp.width).dividedBy(5)
+        }
+        
+        backViewChart.snp.makeConstraints { make in
+            make.trailing.leading.equalTo(view.safeAreaLayoutGuide).inset(15)
+            make.top.equalTo(stackView.snp.bottom).offset(15)
+            make.height.equalTo(view.snp.height).dividedBy(3)
+        }
+    
+        
+        /*
         stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
         stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
         backViewChart.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 32).isActive = true
         backViewChart.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
         backViewChart.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-        backViewChart.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
+//        backViewChart.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
         chartInformationLabel.topAnchor.constraint(equalTo: backViewChart.topAnchor, constant: 32).isActive = true
         chartInformationLabel.bottomAnchor.constraint(equalTo: backViewChart.bottomAnchor, constant: -32).isActive = true
         chartInformationLabel.leadingAnchor.constraint(equalTo: backViewChart.leadingAnchor, constant: 16).isActive = true
         chartInformationLabel.trailingAnchor.constraint(equalTo: backViewChart.trailingAnchor, constant: -16).isActive = true
+        
+        */
     }
     
     private func showDatePickers(type: DatePickerType) {

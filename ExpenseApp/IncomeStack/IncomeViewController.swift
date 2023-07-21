@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class IncomeViewController: UIViewController {
 /*
@@ -45,7 +46,7 @@ class IncomeViewController: UIViewController {
         navBarAppearance.shadowImage = UIImage()
         navBarAppearance.shadowColor = .separator
         navBarAppearance.titleTextAttributes = [
-            .font: UIFont.systemFont(ofSize: elementsSize.GraphVC.titleFontSize)
+            .font: UIFont.systemFont(ofSize: 24)
         ]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance

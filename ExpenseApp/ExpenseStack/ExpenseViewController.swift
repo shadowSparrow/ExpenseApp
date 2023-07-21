@@ -23,7 +23,7 @@ class ExpenseViewController: UIViewController {
         let button = UIButton()
         button.setTitle(elemensNames.addExpenseGathegory, for: .normal)
             button.backgroundColor = .blue
-        button.layer.cornerRadius = elementsSize.expenseVC.buttonCornerRadius
+        button.layer.cornerRadius = 24.0
             button.addTarget(self, action: #selector(addExpensesButtonPressed), for: .touchUpInside)
         //button.isHidden = true
             button.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,7 @@ class ExpenseViewController: UIViewController {
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
             )
             texField.textAlignment = .left
-        texField.layer.cornerRadius = elementsSize.expenseVC.textFieldCornerRadius
+        texField.layer.cornerRadius = 4.0
             texField.backgroundColor = .white
             texField.textColor = .black
      
@@ -71,7 +71,7 @@ class ExpenseViewController: UIViewController {
         navBarAppearance.shadowImage = UIImage()
         navBarAppearance.shadowColor = .separator
         navBarAppearance.titleTextAttributes = [
-            .font: UIFont.systemFont(ofSize: elementsSize.GraphVC.titleFontSize)
+            .font: UIFont.systemFont(ofSize: 24)
         ]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
@@ -87,18 +87,18 @@ class ExpenseViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: elementsSize.expenseVC.tableViewBottomConstraint).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -60).isActive = true
         
-        button.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: elementsSize.expenseVC.buttonLeadingConstraint).isActive = true
-        button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: elementsSize.expenseVC.buttonTrailingConstraint).isActive = true
-        button.heightAnchor.constraint(equalToConstant: elementsSize.expenseVC.buttonHeight).isActive = true
-        button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: elementsSize.expenseVC.buttonBottomConstraint).isActive = true
+        button.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16).isActive = true
+        button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -200).isActive = true
 
         texField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        texField.leadingAnchor.constraint(equalTo: guide.leadingAnchor , constant: elementsSize.expenseVC.textFieldLeadingConstraint).isActive = true
-        texField.trailingAnchor.constraint(equalTo: guide.trailingAnchor , constant: elementsSize.expenseVC.buttonTrailingConstraint).isActive = true
+        texField.leadingAnchor.constraint(equalTo: guide.leadingAnchor , constant: 16.0).isActive = true
+        texField.trailingAnchor.constraint(equalTo: guide.trailingAnchor , constant: -16.0).isActive = true
         texField.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -16).isActive = true
-        texField.heightAnchor.constraint(equalToConstant: elementsSize.expenseVC.buttonHeight).isActive = true
+        texField.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     @objc func addExpensesButtonPressed() {
@@ -161,7 +161,7 @@ extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
     }
      
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        elementsSize.expenseVC.rowHeight
+        64.0
     }
 
 }
