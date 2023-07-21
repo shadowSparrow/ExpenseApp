@@ -13,7 +13,6 @@ class DetailTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 40
-        //stackView.backgroundColor = .cyan
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,7 +22,6 @@ class DetailTableViewCell: UITableViewCell {
      lazy var expenseItemLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        //label.text = "на что"
         label.textColor = .label
         label.textAlignment = .center
         return label
@@ -67,7 +65,7 @@ class DetailTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
      
-        labelsStackView.snp_makeConstraints { make in
+        labelsStackView.snp.makeConstraints { make in
             make.leading.trailing.equalTo(self).inset(0)
             make.centerX.centerY.equalTo(self.snp.center)
         }

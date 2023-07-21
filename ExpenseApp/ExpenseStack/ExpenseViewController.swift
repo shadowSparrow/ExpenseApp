@@ -83,22 +83,24 @@ class ExpenseViewController: UIViewController {
     
     private func setConstraints() {
         let guide = self.view.safeAreaLayoutGuide
+ 
         
-        tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
-        tableView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -60).isActive = true
+        tableView.snp.makeConstraints { make in
+            make.top.trailing.leading.equalTo(guide)
+            make.bottom.equalTo(button.snp.topMargin).offset(64)
+        }
+       
+        button.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(guide).inset(16)
+            make.bottom.equalTo(guide).inset(200)
+            make.height.equalTo(guide.snp.width).dividedBy(7)
+        }
         
-        button.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 16).isActive = true
-        button.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -16).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -200).isActive = true
-
-        texField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        texField.leadingAnchor.constraint(equalTo: guide.leadingAnchor , constant: 16.0).isActive = true
-        texField.trailingAnchor.constraint(equalTo: guide.trailingAnchor , constant: -16.0).isActive = true
-        texField.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -16).isActive = true
-        texField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        texField.snp.makeConstraints { make in
+            make.trailing.leading.equalTo(guide).inset(16)
+            make.height.equalTo(guide.snp.height).dividedBy(8)
+            make.bottom.equalTo(button.snp.top).inset(-8)
+        }
     }
     
     @objc func addExpensesButtonPressed() {

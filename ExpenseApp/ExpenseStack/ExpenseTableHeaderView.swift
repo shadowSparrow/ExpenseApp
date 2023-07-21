@@ -88,7 +88,7 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
     private func setupConstraints() {
      
         labelsStackView.snp.makeConstraints { make in
-            make.centerX.centerY.equalTo(self.snp_center)
+            make.centerX.centerY.equalTo(self.snp.center)
         }
         
          }
