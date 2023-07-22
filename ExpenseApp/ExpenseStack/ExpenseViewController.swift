@@ -15,7 +15,7 @@ class ExpenseViewController: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.backgroundColor = .white
-            tableView.translatesAutoresizingMaskIntoConstraints = false
+            //tableView.translatesAutoresizingMaskIntoConstraints = false
             return tableView
         }()
     
@@ -26,7 +26,7 @@ class ExpenseViewController: UIViewController {
         button.layer.cornerRadius = 24.0
             button.addTarget(self, action: #selector(addExpensesButtonPressed), for: .touchUpInside)
         //button.isHidden = true
-            button.translatesAutoresizingMaskIntoConstraints = false
+            //button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
         
@@ -43,8 +43,7 @@ class ExpenseViewController: UIViewController {
             texField.backgroundColor = .white
             texField.textColor = .black
      
-        
-            texField.translatesAutoresizingMaskIntoConstraints = false
+            //texField.translatesAutoresizingMaskIntoConstraints = false
             return texField
         }()
     var isShowingKeybord = false
@@ -84,7 +83,6 @@ class ExpenseViewController: UIViewController {
     private func setConstraints() {
         let guide = self.view.safeAreaLayoutGuide
  
-        
         tableView.snp.makeConstraints { make in
             make.top.trailing.leading.equalTo(guide)
             make.bottom.equalTo(button.snp.topMargin).offset(64)
@@ -93,13 +91,13 @@ class ExpenseViewController: UIViewController {
         button.snp.makeConstraints { make in
             make.leading.trailing.equalTo(guide).inset(16)
             make.bottom.equalTo(guide).inset(200)
-            make.height.equalTo(guide.snp.width).dividedBy(7)
+            make.height.equalTo(50)
         }
         
         texField.snp.makeConstraints { make in
             make.trailing.leading.equalTo(guide).inset(16)
-            make.height.equalTo(guide.snp.height).dividedBy(8)
-            make.bottom.equalTo(button.snp.top).inset(-8)
+            make.height.equalTo(50)
+            make.bottom.equalTo(button.snp.top).offset(-8)
         }
     }
     

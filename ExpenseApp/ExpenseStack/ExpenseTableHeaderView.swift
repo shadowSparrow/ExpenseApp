@@ -17,7 +17,7 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
         stackView.spacing = 50
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        //stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
@@ -90,6 +90,5 @@ class DetailExpensesTableViewHeaderView: UITableViewHeaderFooterView {
         labelsStackView.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(self.snp.center)
         }
-        
-         }
+    }
 }

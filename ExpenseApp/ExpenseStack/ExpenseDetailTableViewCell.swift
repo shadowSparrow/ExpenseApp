@@ -15,7 +15,7 @@ class DetailTableViewCell: UITableViewCell {
         stackView.spacing = 40
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        //stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 

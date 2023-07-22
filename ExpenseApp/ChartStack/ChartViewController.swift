@@ -158,7 +158,7 @@ class ChartViewController: UIViewController {
        
         stackView.snp.makeConstraints { make in
             make.trailing.leading.top.equalTo(view.safeAreaLayoutGuide).inset(15)
-            make.height.equalTo(view.snp.width).dividedBy(5)
+            make.height.equalTo(50)
         }
         
         backViewChart.snp.makeConstraints { make in
@@ -167,21 +167,6 @@ class ChartViewController: UIViewController {
             make.height.equalTo(view.snp.height).dividedBy(3)
         }
     
-        
-        /*
-        stackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-        backViewChart.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 32).isActive = true
-        backViewChart.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
-        backViewChart.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
-//        backViewChart.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -200).isActive = true
-        chartInformationLabel.topAnchor.constraint(equalTo: backViewChart.topAnchor, constant: 32).isActive = true
-        chartInformationLabel.bottomAnchor.constraint(equalTo: backViewChart.bottomAnchor, constant: -32).isActive = true
-        chartInformationLabel.leadingAnchor.constraint(equalTo: backViewChart.leadingAnchor, constant: 16).isActive = true
-        chartInformationLabel.trailingAnchor.constraint(equalTo: backViewChart.trailingAnchor, constant: -16).isActive = true
-        
-        */
     }
     
     private func showDatePickers(type: DatePickerType) {

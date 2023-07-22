@@ -17,12 +17,12 @@ class ExpenseDetailViewController: UIViewController {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .cyan
         
         tableView.register(DetailExpensesTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: elementsIdentifiers.headerID)
         tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: elementsIdentifiers.cellID)
         
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
         return tableView
     }()
     
@@ -31,7 +31,7 @@ class ExpenseDetailViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 16
         stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         return stackView
     }()
     
@@ -45,7 +45,7 @@ class ExpenseDetailViewController: UIViewController {
         button.backgroundColor = .blue
         button.layer.cornerRadius = 35
         button.addTarget(self, action: #selector(addExpenseButtonPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
@@ -150,8 +150,6 @@ class ExpenseDetailViewController: UIViewController {
         self.view.backgroundColor = UIColor.white
         self.tabBarController?.tabBar.isHidden = true
         
-        //print(currentGarhegory.gathegory)
-
         setUIElements()
         setConstraints()
         setOperationElements()
@@ -173,7 +171,6 @@ extension ExpenseDetailViewController {
             let newExpense = ExpenseModel(description: purposeTextField.text ?? "пусно", amount: Int(amountTextField.text!) ?? 0, date: formattedDate)
             
             currentGarhegory.expenses?.append(newExpense)
-            //print("THIS Array of Expenses \(currentGarhegory.expenses)")
             self.view.endEditing(true)
             tableView.reloadData()
             purposeTextField.text = ""
@@ -208,28 +205,27 @@ extension ExpenseDetailViewController {
    
     private func setConstraints() {
         let guide = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            
-            tableView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: guide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -300),
-            
-            addExpenseLabel.heightAnchor.constraint(equalToConstant: 64),
-            addExpenseLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            addExpenseLabel.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            addExpenseLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
-            
-            button.heightAnchor.constraint(equalToConstant: 70),
-            button.widthAnchor.constraint(equalToConstant: 70),
-            button.topAnchor.constraint(equalTo: stackView.topAnchor),
-            
-            stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            stackView.leadingAnchor.constraint(equalTo: guide.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: guide.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -229)
-                        
-            ])
+        
+        
+        tableView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalTo(guide)
+            make.height.equalTo(guide.snp.height).dividedBy(2)
+        }
+        
+        button.snp.makeConstraints({ make in
+            make.height.width.equalTo(70)
+            make.top.equalTo(stackView.snp.top)
+        })
+        
+        addExpenseLabel.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalTo(stackView.safeAreaInsets)
+            make.height.equalTo(64)
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalTo(guide)
+        }
+        
         
     }
     
